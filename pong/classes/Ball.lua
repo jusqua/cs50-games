@@ -1,67 +1,54 @@
---[[
-    GD50 2018
-    Pong Remake
+-- libraries
+-- https://github.com/vrld/hump/blob/master/class.lua
+local Class = require("external.class")
 
-    -- Ball Class --
+-- ball class definition
+local Ball = Class({})
 
-    Author: Colton Ogden
-    cogden@cs50.harvard.edu
-
-    Represents a ball which will bounce back and forth between paddles
-    and walls until it passes a left or right boundary of the screen,
-    scoring a point for the opponent.
-]]
-
-Ball = Class{}
-
+-- ball initialization class
 function Ball:init(x, y, width, height)
-    self.x = x
-    self.y = y
-    self.width = width
-    self.height = height
+	self.x = x
+	self.y = y
+	self.width = width
+	self.height = height
 
-    -- these variables are for keeping track of our velocity on both the
-    -- X and Y axis, since the ball can move in two dimensions
-    self.dy = 0
-    self.dx = 0
+	self.dy = 0
+	self.dx = 0
 end
 
---[[
-    Expects a paddle as an argument and returns true or false, depending
-    on whether their rectangles overlap.
-]]
+-- ball collision detection based on ball and paddle position
 function Ball:collides(paddle)
-    -- first, check to see if the left edge of either is farther to the right
-    -- than the right edge of the other
-    if self.x > paddle.x + paddle.width or paddle.x > self.x + self.width then
-        return false
-    end
+	-- check to see if the left edge of either is farther to the right than the right edge of the other
+	if self.x > paddle.x + paddle.width or paddle.x > self.x + self.width then
+		return false
+	end
 
-    -- then check to see if the bottom edge of either is higher than the top
-    -- edge of the other
-    if self.y > paddle.y + paddle.height or paddle.y > self.y + self.height then
-        return false
-    end 
+	-- check to see if the bottom edge of either is higher than the top edge of the other
+	if self.y > paddle.y + paddle.height or paddle.y > self.y + self.height then
+		return false
+	end
 
-    -- if the above aren't true, they're overlapping
-    return true
+	-- collides
+	return true
 end
 
---[[
-    Places the ball in the middle of the screen, with no movement.
-]]
-function Ball:reset()
-    self.x = VIRTUAL_WIDTH / 2 - 2
-    self.y = VIRTUAL_HEIGHT / 2 - 2
-    self.dx = 0
-    self.dy = 0
+-- reset the ball in given position
+function Ball:reset(x, y)
+	self.x = x
+	self.y = y
+	self.dx = 0
+	self.dy = 0
 end
 
+-- update ball position based on deltas
 function Ball:update(dt)
-    self.x = self.x + self.dx * dt
-    self.y = self.y + self.dy * dt
+	self.x = self.x + self.dx * dt
+	self.y = self.y + self.dy * dt
 end
 
-function Ball:render()
-    love.graphics.rectangle('fill', self.x, self.y, self.width, self.height)
+-- render ball on given engine
+function Ball:render(love)
+	love.graphics.rectangle("fill", self.x, self.y, self.width, self.height)
 end
+
+return Ball
