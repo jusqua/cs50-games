@@ -1,0 +1,20 @@
+{
+  "neoconf": {
+    "plugins": {
+      "lua_ls": {
+        "enabled": true
+      }
+    }
+  },
+  "lspconfig": {
+    "lua_ls": {
+      "Lua.format.enable": false,
+      "Lua.runtime.version": "LuaJIT",
+      "Lua.workspace.checkThirdParty": false,
+      "Lua.workspace.preloadFileSize": 10000,
+      "Lua.workspace.library": [
+        "${3rd}/love2d/library"
+      ]
+    }
+  }
+}
