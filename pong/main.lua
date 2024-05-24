@@ -191,13 +191,29 @@ function love.update(dt)
 		player1.dy = 0
 	end
 
-	-- player 2
-	if love.keyboard.isDown("up") then
-		player2.dy = -PADDLE_SPEED
-	elseif love.keyboard.isDown("down") then
-		player2.dy = PADDLE_SPEED
-	else
-		player2.dy = 0
+	-- "player 2"
+	if game_state == "play" then
+		local player2_middle_point = player2.y + player2.height / 2
+
+		if ball.x > 2 * VIRTUAL_WIDTH / 3 then
+			-- follow ball
+			if ball.y > player2_middle_point then
+				player2.dy = PADDLE_SPEED
+			elseif ball.y < player2_middle_point then
+				player2.dy = -PADDLE_SPEED
+			else
+				player2.dy = 0
+			end
+		else
+			-- go back to the center
+			if player2_middle_point > VIRTUAL_HEIGHT / 2 then
+				player2.dy = -PADDLE_SPEED
+			elseif player2_middle_point < VIRTUAL_HEIGHT / 2 then
+				player2.dy = PADDLE_SPEED
+			else
+				player2.dy = 0
+			end
+		end
 	end
 
 	-- update our ball based on its DX and DY only if we're in play state;
