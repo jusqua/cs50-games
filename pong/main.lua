@@ -193,23 +193,12 @@ function love.update(dt)
 
 	-- "player 2"
 	if game_state == "play" then
-		local player2_middle_point = player2.y + player2.height / 2
-
-		if ball.x > 2 * VIRTUAL_WIDTH / 3 then
-			-- follow ball
-			if ball.y > player2_middle_point then
+		-- follow the ball if it's approaching the paddle
+		if ball.x > VIRTUAL_WIDTH / 2 and ball.dx > 0 then
+			if ball.y > player2.y + player2.height then
 				player2.dy = PADDLE_SPEED
-			elseif ball.y < player2_middle_point then
+			elseif ball.y < player2.y then
 				player2.dy = -PADDLE_SPEED
-			else
-				player2.dy = 0
-			end
-		else
-			-- go back to the center
-			if player2_middle_point > VIRTUAL_HEIGHT / 2 then
-				player2.dy = -PADDLE_SPEED
-			elseif player2_middle_point < VIRTUAL_HEIGHT / 2 then
-				player2.dy = PADDLE_SPEED
 			else
 				player2.dy = 0
 			end
