@@ -22,6 +22,7 @@ end
 
 -- display a huge text saying "Paused"
 function PauseState:render()
+  self.state:render()
   love.graphics.setFont(hugeFont)
   love.graphics.printf('Paused', 0, 64, VIRTUAL_WIDTH, 'center')
 end
