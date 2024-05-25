@@ -124,20 +124,10 @@ end
     Called when this state is transitioned to from another state.
 ]]
 function PlayState:enter(params)
+    -- recover play state
     if type(params) == "table" then
         for k, v in pairs(params) do
             self[k] = v
         end
     end
-
-    -- if we're coming from another state, restart scrolling
-    scrolling = true
-end
-
---[[
-    Called when this state changes to another state.
-]]
-function PlayState:exit()
-    -- stop scrolling for the death/score screen
-    scrolling = false
 end
