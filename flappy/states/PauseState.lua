@@ -2,11 +2,13 @@ PauseState = Class{__includes = BaseState}
 
 function PauseState:enter(params)
   sounds["switch"]:play()
+  sounds["music"]:pause()
   self.state = params
 end
 
 function PauseState:exit(params)
   sounds["switch"]:play()
+  sounds["music"]:play()
 end
 
 function PauseState:update(dt)
