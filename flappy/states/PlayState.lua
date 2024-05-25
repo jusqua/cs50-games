@@ -105,7 +105,7 @@ function PlayState:update(dt)
     end
 
     if love.keyboard.wasPressed('p') then
-        gStateMachine:change('pause')
+        gStateMachine:change('pause', self)
     end
 end
 
@@ -123,8 +123,14 @@ end
 --[[
     Called when this state is transitioned to from another state.
 ]]
-function PlayState:enter()
-    -- if we're coming from death, restart scrolling
+function PlayState:enter(params)
+    if type(params) == "table" then
+        for k, v in pairs(params) do
+            self[k] = v
+        end
+    end
+
+    -- if we're coming from another state, restart scrolling
     scrolling = true
 end
 

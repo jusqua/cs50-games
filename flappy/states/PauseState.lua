@@ -1,9 +1,13 @@
 PauseState = Class{__includes = BaseState}
 
+function PauseState:enter(params)
+  self.state = params
+end
+
 function PauseState:update(dt)
     -- go back to play if enter is pressed
     if love.keyboard.wasPressed('p') then
-        gStateMachine:change('play')
+        gStateMachine:change('play', self.state)
     end
 end
 
