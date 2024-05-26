@@ -205,6 +205,13 @@ function PlayState:update(dt)
         end
     end
 
+    -- if ball goes below bounds, remove from list
+    for i, powerup in ipairs(self.powerups) do
+        if powerup.y >= VIRTUAL_HEIGHT then
+            table.remove(self.powerups, i)
+        end
+    end
+
     -- if ball goes below bounds, revert to serve state and decrease health
     for i, ball in ipairs(self.balls) do
         if ball.y >= VIRTUAL_HEIGHT then
