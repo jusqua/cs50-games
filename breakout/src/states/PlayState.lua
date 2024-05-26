@@ -28,6 +28,7 @@ function PlayState:enter(params)
     self.highScores = params.highScores
     self.ball = params.ball
     self.level = params.level
+    self.powerups = {}
 
     self.recoverPoints = 5000
 
@@ -53,6 +54,10 @@ function PlayState:update(dt)
     -- update positions based on velocity
     self.paddle:update(dt)
     self.ball:update(dt)
+    for _, powerup in pairs(self.powerups) do
+        powerup:update(dt)
+    end
+
 
     if self.ball:collides(self.paddle) then
         -- raise ball above paddle in case it goes below it, then reverse dy
@@ -206,6 +211,11 @@ function PlayState:render()
     -- render all particle systems
     for k, brick in pairs(self.bricks) do
         brick:renderParticles()
+    end
+
+    -- render all powerups
+    for _, powerup in pairs(self.powerups) do
+        powerup:render()
     end
 
     self.paddle:render()
