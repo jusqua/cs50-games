@@ -36,6 +36,7 @@ function PlayState:enter(params)
     self.timer = 0
     self.hits = 0
 
+    self.paddleSizeup = 1500
     self.recoverPoints = 5000
     self.timeLimit = 30
     self.hitLimit = 15
@@ -127,6 +128,17 @@ function PlayState:update(dt)
                     gSounds['recover']:play()
                 end
 
+                -- if we have enough points, grow paddle
+                if self.score > self.paddleSizeup then
+                    self.paddle.size = math.min(self.paddle.size + 1, 4)
+                    self.paddle.width = 32 * self.paddle.size
+                    self.paddle.x = self.paddle.x - 16
+                    self.paddleSizeup = self.paddleSizeup + math.min(100000, self.paddleSizeup * 2)
+
+                    -- play recover sound effect
+                    gSounds['recover']:play()
+                end
+
                 -- go to our victory screen if there are no more bricks left
                 if self:checkVictory() then
                     gSounds['victory']:play()
@@ -199,6 +211,10 @@ function PlayState:update(dt)
             table.remove(self.balls, i)
 
             if #self.balls == 0 then
+                self.paddle.size = math.max(self.paddle.size - 1, 1)
+                self.paddle.width = 32 * self.paddle.size
+                self.paddle.x = self.paddle.x + 16
+
                 self.health = self.health - 1
                 gSounds['hurt']:play()
 
