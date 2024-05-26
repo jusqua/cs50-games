@@ -56,7 +56,7 @@ function love.load()
         ['main'] = love.graphics.newImage('graphics/breakout.png'),
         ['arrows'] = love.graphics.newImage('graphics/arrows.png'),
         ['hearts'] = love.graphics.newImage('graphics/hearts.png'),
-        ['particle'] = love.graphics.newImage('graphics/particle.png')
+        ['particle'] = love.graphics.newImage('graphics/particle.png'),
     }
 
     -- Quads we will generate for all of our textures; Quads allow us
@@ -66,6 +66,7 @@ function love.load()
         ['paddles'] = GenerateQuadsPaddles(gTextures['main']),
         ['balls'] = GenerateQuadsBalls(gTextures['main']),
         ['bricks'] = GenerateQuadsBricks(gTextures['main']),
+        ['powerups'] = GenerateQuadsPowerups(gTextures['main']),
         ['hearts'] = GenerateQuads(gTextures['hearts'], 10, 9)
     }
     
