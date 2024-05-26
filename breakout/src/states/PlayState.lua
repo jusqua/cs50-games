@@ -64,6 +64,12 @@ function PlayState:update(dt)
         powerup:update(dt)
     end
 
+    for i, powerup in ipairs(self.powerups) do
+        if self.paddle:collides(powerup) then
+            powerup:pickup(self)
+            table.remove(self.powerups, i)
+        end
+    end
 
     for _, ball in pairs(self.balls) do
         if ball:collides(self.paddle) then
@@ -226,7 +232,6 @@ function PlayState:update(dt)
     end
 
     self.timer = self.timer + dt
-    print(self.timer)
     if self.timer >= self.timeLimit then
         self.timer = self.timer - self.timeLimit
         table.insert(self.powerups, Powerup(math.random(32, WINDOW_WIDTH - 32), 32, 9))
