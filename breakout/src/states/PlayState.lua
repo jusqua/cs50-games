@@ -102,60 +102,59 @@ function PlayState:update(dt)
             -- only check collision if we're in play
             if brick.inPlay and ball:collides(brick) then
 
-                -- add to score
-                self.score = self.score + (brick.tier * 200 + brick.color * 25)
+                -- trigger the brick's hit function and score if brick was hitted
+                if brick:hit() then
+                    self.score = self.score + (brick.tier * 200 + brick.color * 25)
+                    self.hits = self.hits + 1
 
-                -- trigger the brick's hit function, which removes it from play
-                brick:hit()
-                self.hits = self.hits + 1
-
-                -- enough number of hits make a powerup spawn
-                if (self.hits >= self.hitLimit) then
-                    self.hits = self.hits - self.hitLimit
-                    table.insert(self.powerups, Powerup(brick.x + brick.width / 2, brick.y + brick.height / 2, 9))
-                    self.hitLimit = math.min(self.hitLimit + 2, 30)
-                end
-
-                -- if we have enough points, recover a point of health
-                if self.score > self.recoverPoints then
-                    -- can't go above 3 health
-                    self.health = math.min(3, self.health + 1)
-
-                    -- multiply recover points by 2
-                    self.recoverPoints = self.recoverPoints + math.min(100000, self.recoverPoints * 2)
-
-                    -- play recover sound effect
-                    gSounds['recover']:play()
-                end
-
-                -- if we have enough points, grow paddle
-                if self.score > self.paddleSizeup then
-                    local size = math.min(self.paddle.size + 1, 4)
-                    if size ~= self.paddle.size then
-                        self.paddle.size = size
-                        self.paddle.width = 32 * size
-                        self.paddle.x = self.paddle.x + 16
+                    -- enough number of hits make a powerup spawn
+                    if (self.hits >= self.hitLimit) then
+                        self.hits = self.hits - self.hitLimit
+                        table.insert(self.powerups, Powerup(brick.x + brick.width / 2, brick.y + brick.height / 2, 9))
+                        self.hitLimit = math.min(self.hitLimit + 2, 30)
                     end
 
-                    self.paddleSizeup = self.paddleSizeup + math.min(100000, self.paddleSizeup * 2)
+                    -- if we have enough points, recover a point of health
+                    if self.score > self.recoverPoints then
+                        -- can't go above 3 health
+                        self.health = math.min(3, self.health + 1)
 
-                    -- play recover sound effect
-                    gSounds['recover']:play()
-                end
+                        -- multiply recover points by 2
+                        self.recoverPoints = self.recoverPoints + math.min(100000, self.recoverPoints * 2)
 
-                -- go to our victory screen if there are no more bricks left
-                if self:checkVictory() then
-                    gSounds['victory']:play()
+                        -- play recover sound effect
+                        gSounds['recover']:play()
+                    end
 
-                    gStateMachine:change('victory', {
-                        level = self.level,
-                        paddle = self.paddle,
-                        health = self.health,
-                        score = self.score,
-                        highScores = self.highScores,
-                        ball = ball,
-                        recoverPoints = self.recoverPoints
-                    })
+                    -- if we have enough points, grow paddle
+                    if self.score > self.paddleSizeup then
+                        local size = math.min(self.paddle.size + 1, 4)
+                        if size ~= self.paddle.size then
+                            self.paddle.size = size
+                            self.paddle.width = 32 * size
+                            self.paddle.x = self.paddle.x + 16
+                        end
+
+                        self.paddleSizeup = self.paddleSizeup + math.min(100000, self.paddleSizeup * 2)
+
+                        -- play recover sound effect
+                        gSounds['recover']:play()
+                    end
+
+                    -- go to our victory screen if there are no more bricks left
+                    if self:checkVictory() then
+                        gSounds['victory']:play()
+
+                        gStateMachine:change('victory', {
+                            level = self.level,
+                            paddle = self.paddle,
+                            health = self.health,
+                            score = self.score,
+                            highScores = self.highScores,
+                            ball = ball,
+                            recoverPoints = self.recoverPoints
+                        })
+                    end
                 end
 
                 --

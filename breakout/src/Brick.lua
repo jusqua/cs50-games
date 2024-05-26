@@ -47,6 +47,12 @@ paletteColors = {
         ['r'] = 251,
         ['g'] = 242,
         ['b'] = 54
+    },
+    -- black
+    [6] = {
+        ['r'] = 255,
+        ['g'] = 255,
+        ['b'] = 255
     }
 }
 
@@ -85,6 +91,12 @@ end
     changing its color otherwise.
 ]]
 function Brick:hit()
+    if self.color == 6 and self.tier == 3 then
+        gSounds['wall-hit']:stop()
+        gSounds['wall-hit']:play()
+        return false
+    end
+
     -- set the particle system to interpolate between two colors; in this case, we give
     -- it our self.color but with varying alpha; brighter for higher tiers, fading to 0
     -- over the particle's lifetime (the second color)
@@ -127,6 +139,8 @@ function Brick:hit()
         gSounds['brick-hit-1']:stop()
         gSounds['brick-hit-1']:play()
     end
+    
+    return true
 end
 
 function Brick:update(dt)
