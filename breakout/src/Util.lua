@@ -50,6 +50,14 @@ function table.slice(tbl, first, last, step)
 end
 
 --[[
+    Utility function that clamps a middle value within a range of values between
+    a defined minimum bound and a maximum bound, like them CSS clamp function
+]]
+function math.clamp(min, val, max)
+    return math.min(max, math.max(val, min))
+end
+
+--[[
     This function is specifically made to piece out the bricks from the
     sprite sheet. Since the sprite sheet has non-uniform sprites within,
     we have to return a subset of GenerateQuads.
