@@ -130,9 +130,13 @@ function PlayState:update(dt)
 
                 -- if we have enough points, grow paddle
                 if self.score > self.paddleSizeup then
-                    self.paddle.size = math.min(self.paddle.size + 1, 4)
-                    self.paddle.width = 32 * self.paddle.size
-                    self.paddle.x = self.paddle.x - 16
+                    local size = math.min(self.paddle.size + 1, 4)
+                    if size ~= self.paddle.size then
+                        self.paddle.size = size
+                        self.paddle.width = 32 * size
+                        self.paddle.x = self.paddle.x + 16
+                    end
+
                     self.paddleSizeup = self.paddleSizeup + math.min(100000, self.paddleSizeup * 2)
 
                     -- play recover sound effect
@@ -218,9 +222,12 @@ function PlayState:update(dt)
             table.remove(self.balls, i)
 
             if #self.balls == 0 then
-                self.paddle.size = math.max(self.paddle.size - 1, 1)
-                self.paddle.width = 32 * self.paddle.size
-                self.paddle.x = self.paddle.x + 16
+                local size = math.max(self.paddle.size - 1, 1)
+                if size ~= self.paddle.size then
+                    self.paddle.size = size
+                    self.paddle.width = 32 * size
+                    self.paddle.x = self.paddle.x + 16
+                end
 
                 self.health = self.health - 1
                 gSounds['hurt']:play()
