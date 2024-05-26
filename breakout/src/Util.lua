@@ -59,11 +59,10 @@ end
 
 --[[
     This function is specifically made to piece out the bricks from the
-    sprite sheet. Since the sprite sheet has non-uniform sprites within,
-    we have to return a subset of GenerateQuads.
+    sprite sheet.
 ]]
 function GenerateQuadsBricks(atlas)
-    return table.slice(GenerateQuads(atlas, 32, 16), 1, 21)
+    return GenerateQuads(atlas, 32, 16)
 end
 
 --[[
