@@ -33,8 +33,12 @@ function PlayState:enter(params)
     self.level = params.level
     self.balls = { params.ball }
     self.powerups = {}
+    self.timer = 0
+    self.hits = 0
 
     self.recoverPoints = 5000
+    self.timeLimit = 30
+    self.hitLimit = 15
 end
 
 function PlayState:update(dt)
@@ -96,6 +100,14 @@ function PlayState:update(dt)
 
                 -- trigger the brick's hit function, which removes it from play
                 brick:hit()
+                self.hits = self.hits + 1
+
+                -- enough number of hits make a powerup spawn
+                if (self.hits >= self.hitLimit) then
+                    self.hits = self.hits - self.hitLimit
+                    table.insert(self.powerups, Powerup(brick.x + brick.width / 2, brick.y + brick.height / 2, 9))
+                    self.hitLimit = math.min(self.hitLimit + 2, 30)
+                end
 
                 -- if we have enough points, recover a point of health
                 if self.score > self.recoverPoints then
@@ -211,6 +223,14 @@ function PlayState:update(dt)
 
     if love.keyboard.wasPressed('escape') then
         love.event.quit()
+    end
+
+    self.timer = self.timer + dt
+    print(self.timer)
+    if self.timer >= self.timeLimit then
+        self.timer = self.timer - self.timeLimit
+        table.insert(self.powerups, Powerup(math.random(32, WINDOW_WIDTH - 32), 32, 9))
+        self.timeLimit = math.min(self.timeLimit + 5, 120)
     end
 end
 
