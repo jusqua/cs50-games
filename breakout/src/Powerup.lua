@@ -11,6 +11,18 @@ local actions = {
             ball.y = state.paddle.y - 8
             table.insert(state.balls, ball)
         end
+    end,
+    -- unlock key bricks
+    [10] = function (state)
+        for _, brick in pairs(state.bricks) do
+            if brick.color == 6 and brick.tier == 3 then
+                state.score = state.score + 1200
+                brick.tier = 0
+            end
+        end
+
+        -- hardcoded powerup list overwrite :P
+        state.powerups = { 9 }
     end
 }
 
