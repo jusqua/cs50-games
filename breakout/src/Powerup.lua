@@ -1,15 +1,16 @@
 Powerup = Class{}
 
 local actions = {
-    -- duplicate a random ball
+    -- gerenerate two more balls
     [9] = function (state)
-        local extra_ball = Ball(math.random(7))
-        local selected_ball = state.balls[math.random(#state.balls)]
-        extra_ball.x = selected_ball.x
-        extra_ball.y = selected_ball.y
-        extra_ball.dx = selected_ball.dx
-        extra_ball.dy = selected_ball.dy
-        table.insert(state.balls, extra_ball)
+        for _ = 0, 1 do
+            local ball = Ball(math.random(7))
+            ball.dx = math.random(-200, 200)
+            ball.dy = math.random(-50, -60)
+            ball.x = state.paddle.x + (state.paddle.width / 2) - 4
+            ball.y = state.paddle.y - 8
+            table.insert(state.balls, ball)
+        end
     end
 }
 
@@ -30,11 +31,12 @@ function Powerup:init(x, y, type)
 end
 
 function Powerup:update(dt)
-  self.y = self.y + self.dy * dt
+    self.y = self.y + self.dy * dt
 end
 
 function Powerup:pickup(state)
-  actions[self.type](state)
+    actions[self.type](state)
+    gSounds["recover"]:play()
 end
 
 function Powerup:render()
