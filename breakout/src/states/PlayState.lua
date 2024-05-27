@@ -37,10 +37,10 @@ function PlayState:enter(params)
     self.hits = 0
 
     self.availablePowerups = { 9 }
-    self.paddleSizeup = 1500
+    self.paddleSizeup = 10000
     self.recoverPoints = 5000
-    self.timeLimit = 30
-    self.hitLimit = 15
+    self.timeLimit = 60
+    self.hitLimit = 50
 
     for _, brick in pairs(self.bricks) do
         if brick.color == 6 and brick.tier == 3 then
@@ -118,12 +118,11 @@ function PlayState:update(dt)
                     -- enough number of hits make a powerup spawn
                     if (self.hits >= self.hitLimit) then
                         self.hits = self.hits - self.hitLimit
+
                         local powerup = self.availablePowerups[math.random(1, #self.availablePowerups)]
-                        table.insert(
-                            self.powerups,
-                            Powerup( brick.x + brick.width / 2, brick.y + brick.height / 2, powerup)
-                        )
-                        self.hitLimit = math.min(self.hitLimit + 2, 30)
+                        table.insert(self.powerups, Powerup(brick.x + brick.width / 2, brick.y + brick.height / 2, powerup))
+
+                        self.hitLimit = math.min(self.hitLimit + 10, 1000)
                     end
 
                     -- if we have enough points, recover a point of health
@@ -275,7 +274,9 @@ function PlayState:update(dt)
     self.timer = self.timer + dt
     if self.timer >= self.timeLimit then
         self.timer = self.timer - self.timeLimit
+
         table.insert(self.powerups, Powerup(math.random(32, WINDOW_WIDTH - 32), 32, 9))
+
         self.timeLimit = math.min(self.timeLimit + 5, 120)
     end
 end
