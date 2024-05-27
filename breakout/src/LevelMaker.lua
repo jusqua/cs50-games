@@ -122,18 +122,11 @@ function LevelMaker.createMap(level)
     -- in the event we didn't generate any bricks, try again
     if #bricks == 0 then
         return self.createMap(level)
-    -- generate locked brick every 5 levels
-    elseif level % 5 == 0 then
-        local lockedBricks = 1 + math.floor(#bricks / 20)
-        local c = 0
-        while c < lockedBricks do
-            local randomBrick = bricks[math.random(1, #bricks)]
-            if randomBrick.color ~= 6 then
-                randomBrick.color = 6
-                randomBrick.tier = 3
-                c = c + 1
-            end
-        end
+    -- generate locked brick with 20% chance
+    elseif math.random(1, 5) == 5 then
+        local randomBrick = bricks[math.random(1, #bricks)]
+        randomBrick.color = 6
+        randomBrick.tier = 3
     end
 
     return bricks
