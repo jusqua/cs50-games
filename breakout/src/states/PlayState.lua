@@ -122,7 +122,7 @@ function PlayState:update(dt)
                         local powerup = self.availablePowerups[math.random(1, #self.availablePowerups)]
                         table.insert(self.powerups, Powerup(brick.x + brick.width / 2, brick.y + brick.height / 2, powerup))
 
-                        self.hitLimit = math.min(self.hitLimit + 10, 100)
+                        self.hitLimit = math.min(self.hitLimit + 2, 50)
                     end
 
                     -- if we have enough points, recover a point of health
