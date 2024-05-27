@@ -143,7 +143,7 @@ function PlayState:update(dt)
                         if size ~= self.paddle.size then
                             self.paddle.size = size
                             self.paddle.width = 32 * size
-                            self.paddle.x = math.min(0, self.paddle.x - 16)
+                            self.paddle.x = math.max(0, self.paddle.x - 16)
                         end
 
                         self.paddleSizeup = self.paddleSizeup + math.min(100000, self.paddleSizeup * 2)
@@ -236,7 +236,7 @@ function PlayState:update(dt)
                 if size ~= self.paddle.size then
                     self.paddle.size = size
                     self.paddle.width = 32 * size
-                    self.paddle.x = math.max(self.paddle.x + 16, VIRTUAL_WIDTH)
+                    self.paddle.x = math.min(self.paddle.x + 16, VIRTUAL_WIDTH - self.paddle.width)
                 end
 
                 self.health = self.health - 1
