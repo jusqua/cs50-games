@@ -275,9 +275,8 @@ function PlayState:update(dt)
     if self.timer >= self.timeLimit then
         self.timer = self.timer - self.timeLimit
 
-        table.insert(self.powerups, Powerup(math.random(32, WINDOW_WIDTH - 32), 32, 9))
-
-        self.timeLimit = math.min(self.timeLimit + 5, 120)
+        local powerup = self.availablePowerups[math.random(1, #self.availablePowerups)]
+        table.insert(self.powerups, Powerup(math.random(32, WINDOW_WIDTH - 32), 16, powerup))
     end
 end
 
