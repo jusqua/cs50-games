@@ -163,7 +163,13 @@ function PlayState:update(dt)
                             score = self.score,
                             highScores = self.highScores,
                             ball = ball,
-                            recoverPoints = self.recoverPoints
+                            recoverPoints = self.recoverPoints,
+                            paddleSizeup = self.paddleSizeup,
+                            timeLimit = self.timeLimit,
+                            hitLimit = self.hitLimit,
+                            availablePowerups = self.availablePowerups,
+                            hits = self.hits,
+                            timer = self.timer
                         })
                     end
                 end
@@ -255,7 +261,13 @@ function PlayState:update(dt)
                         score = self.score,
                         highScores = self.highScores,
                         level = self.level,
-                        recoverPoints = self.recoverPoints
+                        recoverPoints = self.recoverPoints,
+                        paddleSizeup = self.paddleSizeup,
+                        timeLimit = self.timeLimit,
+                        hitLimit = self.hitLimit,
+                        availablePowerups = self.availablePowerups,
+                        hits = self.hits,
+                        timer = self.timer
                     })
                 end
             end
