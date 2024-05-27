@@ -21,6 +21,12 @@ function VictoryState:enter(params)
     self.health = params.health
     self.ball = params.ball
     self.recoverPoints = params.recoverPoints
+    self.paddleSizeup = params.paddleSizeup
+    self.timer = params.timer
+    self.hits = params.hits
+    self.timeLimit = params.timeLimit
+    self.hitLimit = params.hitLimit
+    self.availablePowerups = params.availablePowerups
 end
 
 function VictoryState:update(dt)
