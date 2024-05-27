@@ -12,17 +12,21 @@ local actions = {
             table.insert(state.balls, ball)
         end
     end,
-    -- unlock key bricks
+    -- unlock one key brick
     [10] = function (state)
+        local lockeds = {}
         for _, brick in pairs(state.bricks) do
             if brick.color == 6 and brick.tier == 3 then
-                state.score = state.score + 1200
-                brick.tier = 0
+                table.insert(lockeds, brick)
             end
         end
 
+        lockeds[math.random(1, #lockeds)].tier = 0
+
         -- hardcoded powerup list overwrite :P
-        state.powerups = { 9 }
+        if #lockeds == 1 then
+            state.powerups = { 9 }
+        end
     end
 }
 
