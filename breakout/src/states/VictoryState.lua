@@ -39,6 +39,7 @@ function VictoryState:update(dt)
             health = self.health,
             score = self.score,
             highScores = self.highScores,
+            ball = self.ball,
             recoverPoints = self.recoverPoints,
             paddleSizeup = self.paddleSizeup,
             timeLimit = self.timeLimit,

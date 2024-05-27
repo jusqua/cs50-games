@@ -31,10 +31,7 @@ function ServeState:enter(params)
     self.timeLimit = params.timeLimit
     self.hitLimit = params.hitLimit
     self.availablePowerups = params.availablePowerups
-
-    -- init new ball (random color for fun)
-    self.ball = Ball()
-    self.ball.skin = math.random(7)
+    self.ball = params.ball or Ball(math.random(7))
 end
 
 function ServeState:update(dt)
