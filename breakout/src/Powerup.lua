@@ -23,7 +23,7 @@ local actions = {
         end
 
         -- hardcoded powerup list overwrite :P
-        state.powerups = { 9 }
+        state.availablePowerups = { 9 }
     end
 }
 
