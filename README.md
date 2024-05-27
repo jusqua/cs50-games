@@ -6,3 +6,4 @@ Don't copy and paste any of these files, try to solve any problems by yourself.
 
 * Pong (Unsubmitted) - [Solution](pong)
 * Flappy Bird (Unsubmitted) - [Solution](flappy)
+* Breakout (Unsubmitted) - [Solution](breakout)
