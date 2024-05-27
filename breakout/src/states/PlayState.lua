@@ -33,14 +33,14 @@ function PlayState:enter(params)
     self.level = params.level
     self.balls = { params.ball }
     self.powerups = {}
-    self.timer = 0
-    self.hits = 0
+    self.timer = params.timer
+    self.hits = params.hits
 
-    self.availablePowerups = { 9 }
-    self.paddleSizeup = 10000
-    self.recoverPoints = 5000
-    self.timeLimit = 60
-    self.hitLimit = 50
+    self.availablePowerups = params.availablePowerups
+    self.paddleSizeup = params.paddleSizeup
+    self.recoverPoints = params.recoverPoints 
+    self.timeLimit = params.timeLimit
+    self.hitLimit = params.hitLimit
 
     for _, brick in pairs(self.bricks) do
         if brick.color == 6 and brick.tier == 3 then
@@ -122,7 +122,7 @@ function PlayState:update(dt)
                         local powerup = self.availablePowerups[math.random(1, #self.availablePowerups)]
                         table.insert(self.powerups, Powerup(brick.x + brick.width / 2, brick.y + brick.height / 2, powerup))
 
-                        self.hitLimit = math.min(self.hitLimit + 10, 1000)
+                        self.hitLimit = math.min(self.hitLimit + 10, 100)
                     end
 
                     -- if we have enough points, recover a point of health
@@ -146,7 +146,7 @@ function PlayState:update(dt)
                             self.paddle.x = math.max(0, self.paddle.x - 16)
                         end
 
-                        self.paddleSizeup = self.paddleSizeup + math.min(100000, self.paddleSizeup * 2)
+                        self.paddleSizeup = self.paddleSizeup + math.min(100000, self.paddleSizeup)
 
                         -- play recover sound effect
                         gSounds['recover']:play()

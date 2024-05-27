@@ -25,6 +25,12 @@ function ServeState:enter(params)
     self.highScores = params.highScores
     self.level = params.level
     self.recoverPoints = params.recoverPoints
+    self.paddleSizeup = params.paddleSizeup
+    self.timer = params.timer
+    self.hits = params.hits
+    self.timeLimit = params.timeLimit
+    self.hitLimit = params.hitLimit
+    self.availablePowerups = params.availablePowerups
 
     -- init new ball (random color for fun)
     self.ball = Ball()
@@ -47,7 +53,13 @@ function ServeState:update(dt)
             highScores = self.highScores,
             ball = self.ball,
             level = self.level,
-            recoverPoints = self.recoverPoints
+            recoverPoints = self.recoverPoints,
+            paddleSizeup = self.paddleSizeup,
+            timeLimit = self.timeLimit,
+            hitLimit = self.hitLimit,
+            availablePowerups = self.availablePowerups,
+            hits = self.hits,
+            timer = self.timer
         })
     end
 
