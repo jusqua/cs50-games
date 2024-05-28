@@ -194,8 +194,10 @@ function PlayState:calculateMatches()
         gSounds['match']:play()
 
         -- add score for each match
-        for k, match in pairs(matches) do
-            self.score = self.score + #match * 50
+        for _, match in pairs(matches) do
+            for _, tile in pairs(match) do
+                self.score = self.score + (1 + 0.50 * (tile.variety - 1)) * 50
+            end
             self.timer = self.timer + #match
         end
 
