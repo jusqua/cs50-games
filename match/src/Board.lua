@@ -38,7 +38,7 @@ function Board:initializeTiles()
         end
     end
 
-    while self:calculateMatches() do
+    if self:calculateMatches() or not self:checkIntegrity() then
         
         -- recursively initialize if matches were returned so we always have
         -- a matchless board on start
@@ -302,6 +302,76 @@ function Board:getFallingTiles()
     end
 
     return tweens
+end
+
+--[[
+    Check if have at least one possible move in the board
+]]
+function Board:checkIntegrity()
+    local offsets = {
+        -2, -- 2 rooms left/up
+        -1, -- 1 room left/up
+        1,  -- 1 room right/down
+        2   -- 2 rooms right/down
+    }
+
+    for y = 1, 8 do
+        for x = 1, 8 do
+            local color = self.tiles[y][x].color
+            local found = 1
+
+            -- check horizontal matches, the ugly and the bad way
+            -- this logic virtually moves the tile and check if the color
+            -- from the left and right side of the tile matches
+            -- "moving" y position based on offset, i.e. upwards and backwards
+            for offset = -1, 1, 2 do
+                local movedY = y + offset
+                -- check if it out of bounds
+                if movedY >= 1 and movedY <= 8 then
+                    -- use the helper table that store the offsets between the virtual position
+                    -- of the tile and the other two possible tiles
+                    for i = 1, 3 do
+                        local leftX = x + offsets[i]
+                        local rightX = x + offsets[i + 1]
+                        -- check if it out of bounds
+                        if leftX >= 1 and leftX <= 8 and rightX >= 1 and rightX <= 8 then
+                            local leftColor = self.tiles[movedY][leftX].color
+                            local rightColor = self.tiles[movedY][rightX].color
+                            -- if color matches, so have one possible move
+                            if leftColor == color and rightColor == color then
+                                return true
+                            end
+                        end
+                    end
+                end
+            end
+            -- do the same thing to x position :P
+            for offset = -1, 1, 2 do
+                local movedX = x + offset
+                -- check if it out of bounds
+                if movedX >= 1 and movedX <= 8 then
+                    -- use the helper table that store the offsets between the virtual position
+                    -- of the tile and the other two possible tiles
+                    for i = 1, 3 do
+                        local leftY = y + offsets[i]
+                        local rightY = y + offsets[i + 1]
+                        -- check if it out of bounds
+                        if leftY >= 1 and leftY <= 8 and rightY >= 1 and rightY <= 8 then
+                            local leftColor = self.tiles[leftY][movedX].color
+                            local rightColor = self.tiles[rightY][movedX].color
+                            -- if color matches, so have one possible move
+                            if leftColor == color and rightColor == color then
+                                return true
+                            end
+                        end
+                    end
+                end
+            end
+        end
+    end
+
+    -- no match found
+    return false
 end
 
 function Board:newTile(x, y)

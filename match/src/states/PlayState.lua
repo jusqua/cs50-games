@@ -239,6 +239,10 @@ function PlayState:calculateMatches()
     else
         self.canInput = true
     end
+
+    if not self.board:checkIntegrity() then
+        self.board:initializeTiles()
+    end
 end
 
 function PlayState:render()
