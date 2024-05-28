@@ -57,18 +57,11 @@ function Board:calculateMatches()
     -- how many of the same color blocks in a row we've found
     local matchNum = 1
 
-    -- if shiny tile is found
-    local shiny = false
-
     -- horizontal matches first
     for y = 1, 8 do
         local colorToMatch = self.tiles[y][1].color
 
         matchNum = 1
-
-        if self.tiles[y][1].shiny then
-            shiny = true
-        end
         
         -- every horizontal tile
         for x = 2, 8 do
@@ -76,9 +69,6 @@ function Board:calculateMatches()
             -- if this is the same color as the one we're trying to match...
             if self.tiles[y][x].color == colorToMatch then
                 matchNum = matchNum + 1
-                if self.tiles[y][x].shiny then
-                    shiny = true
-                end
             else
                 
                 -- set this as the new color we want to watch for
@@ -89,9 +79,12 @@ function Board:calculateMatches()
                     local match = {}
                     local start, finish = x - 1, x - matchNum
                     
-                    if shiny then
-                        start, finish = 8, 1
-                        shiny = false
+                    -- find shiny tiles
+                    for x2 = start, finish, -1 do
+                        if self.tiles[y][x2].shiny then
+                            start, finish = 8, 1
+                            break
+                        end
                     end
 
                     -- go backwards from here by matchNum
@@ -119,9 +112,12 @@ function Board:calculateMatches()
             local match = {}
             local start, finish = 8, 8 - matchNum + 1
             
-            if shiny then
-                finish = 1
-                shiny = false
+            -- find shiny tiles
+            for x = start, finish, -1 do
+                if self.tiles[y][x].shiny then
+                    finish = 1
+                    break
+                end
             end
             
             -- go backwards from end of last row by matchNum
@@ -139,17 +135,10 @@ function Board:calculateMatches()
 
         matchNum = 1
 
-        if self.tiles[1][x].shiny then
-            shiny = true
-        end
-
         -- every vertical tile
         for y = 2, 8 do
             if self.tiles[y][x].color == colorToMatch then
                 matchNum = matchNum + 1
-                if self.tiles[y][x].shiny then
-                    shiny = true
-                end
             else
                 colorToMatch = self.tiles[y][x].color
 
@@ -157,9 +146,12 @@ function Board:calculateMatches()
                     local match = {}
                     local start, finish = y - 1, y - matchNum
                     
-                    if shiny then
-                        start, finish = 8, 1
-                        shiny = false
+                    -- find shiny tiles
+                    for y2 = start, finish, -1 do
+                        if self.tiles[y2][x].shiny then
+                            start, finish = 8, 1
+                            break
+                        end
                     end
 
                     for y2 = start, finish, -1 do
@@ -183,9 +175,12 @@ function Board:calculateMatches()
             local match = {}
             local start, finish = 8, 8 - matchNum + 1
             
-            if shiny then
-                finish = 1
-                shiny = false
+            -- find shiny tiles
+            for y = start, finish, -1 do
+                if self.tiles[y][x].shiny then
+                    finish = 1
+                    break
+                end
             end
             
             -- go backwards from end of last row by matchNum
