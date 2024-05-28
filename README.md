@@ -7,3 +7,4 @@ Don't copy and paste any of these files, try to solve any problems by yourself.
 * Pong → [Submission](pong) and [Screencast](https://youtu.be/F9rwGeborvk)
 * Flappy Bird → [Submission](flappy) and [Screencast](https://youtu.be/1p5GHHTBeCg)
 * Breakout → [Submission](breakout) and [Screencast](https://youtu.be/QTfDsc9HDQg)
+* Match-3 → [Submission](match) and [Screencast](https://youtu.be/ym-81XbEGvI)
