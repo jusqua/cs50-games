@@ -232,12 +232,11 @@ function PlayState:calculateMatches()
                 if found[tile] == nil then
                     self.score = self.score + (1 + 0.50 * (tile.variety - 1)) * 50
                     found[tile] = true
+                    -- increase timer based on tiles found in match
+                    self.timer = self.timer + 1
                 end
             end
         end
-
-        -- increase timer based on tiles found in match
-        self.timer = self.timer + #found
 
         -- remove any tiles that matched from the board, making empty spaces
         self.board:removeMatches()
