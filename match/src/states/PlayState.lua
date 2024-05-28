@@ -193,13 +193,21 @@ function PlayState:calculateMatches()
         gSounds['match']:stop()
         gSounds['match']:play()
 
+        -- keep track of found tile to prevent give additional score
+        local found = {}
+
         -- add score for each match
         for _, match in pairs(matches) do
             for _, tile in pairs(match) do
-                self.score = self.score + (1 + 0.50 * (tile.variety - 1)) * 50
+                if found[tile] == nil then
+                    self.score = self.score + (1 + 0.50 * (tile.variety - 1)) * 50
+                    found[tile] = true
+                end
             end
-            self.timer = self.timer + #match
         end
+
+        -- increase timer based on tiles found in match
+        self.timer = self.timer + #found
 
         -- remove any tiles that matched from the board, making empty spaces
         self.board:removeMatches()
