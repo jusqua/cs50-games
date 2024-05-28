@@ -221,8 +221,8 @@ function Board:getFallingTiles()
     -- tween table, with tiles as keys and their x and y as the to values
     local tweens = {}
 
-    -- 20% chance to generate a shiny block
-    local shiny = math.random() > 0.8 and true or false
+    -- 10% chance to generate a shiny block
+    local shiny = math.random() > 0.9 and true or false
 
     -- for each column, go up tile by tile till we hit a space
     for x = 1, 8 do
