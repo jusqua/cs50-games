@@ -305,7 +305,13 @@ function Board:getFallingTiles()
 end
 
 function Board:newTile(x, y)
-    return Tile(x, y, math.random(18), math.random(1, math.min(self.level, 6)))
+    return Tile(
+        x,
+        y,
+        -- workaround to get only selected colors with tinkering too much
+        gAvailableTilesIndexes[math.random(#gAvailableTilesIndexes)],
+        math.random(1, math.min(self.level, 6))
+    )
 end
 
 function Board:render()

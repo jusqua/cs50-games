@@ -68,3 +68,6 @@ gFonts = {
     ['medium'] = love.graphics.newFont('fonts/font.ttf', 16),
     ['large'] = love.graphics.newFont('fonts/font.ttf', 32)
 }
+
+-- hardcoded permitted color in tiles
+gAvailableTilesIndexes = { 1, 4, 6, 9, 11, 12, 14, 17 }
