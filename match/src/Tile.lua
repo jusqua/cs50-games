@@ -39,11 +39,11 @@ end
 function Tile:shinify()
     self.shiny = true
 
-    Timer.every(2, function ()
-        Timer.tween(1, {
+    Timer.every(1, function ()
+        Timer.tween(0.5, {
             [self] = { transitionColor = 0.5 }
         }):finish(function()
-            Timer.tween(1, {
+            Timer.tween(0.5, {
                 [self] = { transitionColor = 1 }
             })
         end)
