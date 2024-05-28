@@ -230,7 +230,7 @@ function PlayState:calculateMatches()
         for _, match in pairs(matches) do
             for _, tile in pairs(match) do
                 if found[tile] == nil then
-                    self.score = self.score + (1 + 0.50 * (tile.variety - 1)) * 50
+                    self.score = self.score + (1 + 0.20 * (tile.variety - 1)) * 50
                     found[tile] = true
                     -- increase timer based on tiles found in match
                     self.timer = self.timer + 1
