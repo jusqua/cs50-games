@@ -122,11 +122,13 @@ function PlayState:update(dt)
         end
         
         -- highlight with mouse cursor
+        local mouseInBounds = false
         local mouseX, mouseY = love.mouse.getPosition()
         mouseX, mouseY = push:toGame(mouseX, mouseY)
 
         if (mouseX >= self.board.x and mouseX <= self.board.x + 32 * 8) and
            (mouseY >= self.board.y and mouseY <= self.board.y + 32 * 8) then
+            mouseInBounds = true
             local boardHighlightX = math.min(math.floor((mouseX - self.board.x) / 32), 7)
             local boardHighlightY = math.min(math.floor((mouseY - self.board.y) / 32), 7)
             -- play sound if a different location is selected
@@ -138,7 +140,8 @@ function PlayState:update(dt)
         end
 
         -- if we've pressed enter, to select or deselect a tile...
-        if love.keyboard.wasPressed('enter') or love.keyboard.wasPressed('return') then
+        if (love.keyboard.wasPressed('enter') or love.keyboard.wasPressed('return')) or
+           (mouseInBounds and love.mouse.wasPressed(1)) then
             
             -- if same tile as currently highlighted, deselect
             local x = self.boardHighlightX + 1
