@@ -15,6 +15,10 @@ function LevelMaker.generate(width, height)
     local entities = {}
     local objects = {}
 
+    local keyLockColor = math.random(4)
+    local key, lock = true, true
+    local lockObj = nil
+
     local tileID = TILE_ID_GROUND
     
     -- whether we should draw our tiles with toppers
@@ -95,8 +99,47 @@ function LevelMaker.generate(width, height)
                 )
             end
 
+            -- chance to spawn the lock
+            if lock and math.random(x, width / 2) == width / 2 then
+                lockObj = GameObject {
+                    texture = 'keys-and-locks',
+                    x = (x - 1) * TILE_SIZE,
+                    y = (blockHeight - 1) * TILE_SIZE,
+                    width = TILE_SIZE,
+                    height = TILE_SIZE,
+                    frame = LOCKS[keyLockColor],
+                    collidable = true,
+                    consumable = false,
+                    solid = true,
+                    onCollide = function () end,
+                    onConsume = function (obj)
+                        gSounds['powerup-reveal']:play()
+                    end
+                } 
+
+                table.insert(objects, lockObj)
+                lock = false
+            -- chance to spawn the key
+            elseif not lock and key and math.random(x, width - 5) == width - 5 then
+                table.insert(objects, GameObject {
+                    texture = 'keys-and-locks',
+                    x = (x - 1) * TILE_SIZE,
+                    y = (blockHeight + 1) * TILE_SIZE,
+                    width = TILE_SIZE,
+                    height = TILE_SIZE,
+                    frame = KEYS[keyLockColor],
+                    collidable = true,
+                    consumable = true,
+                    solid = false,
+                    onConsume = function (obj)
+                        lockObj.consumable = true
+                        lockObj.solid = false
+                        gSounds['powerup-reveal']:play()
+                    end
+                })
+                key = false
             -- chance to spawn a block
-            if math.random(10) == 1 then
+            elseif math.random(10) == 1 then
                 table.insert(objects,
 
                     -- jump block
