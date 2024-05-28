@@ -120,6 +120,22 @@ function PlayState:update(dt)
             self.boardHighlightX = math.min(7, self.boardHighlightX + 1)
             gSounds['select']:play()
         end
+        
+        -- highlight with mouse cursor
+        local mouseX, mouseY = love.mouse.getPosition()
+        mouseX, mouseY = push:toGame(mouseX, mouseY)
+
+        if (mouseX >= self.board.x and mouseX <= self.board.x + 32 * 8) and
+           (mouseY >= self.board.y and mouseY <= self.board.y + 32 * 8) then
+            local boardHighlightX = math.min(math.floor((mouseX - self.board.x) / 32), 7)
+            local boardHighlightY = math.min(math.floor((mouseY - self.board.y) / 32), 7)
+            -- play sound if a different location is selected
+            if boardHighlightX ~= self.boardHighlightX or boardHighlightY ~= self.boardHighlightY then
+                self.boardHighlightX = boardHighlightX
+                self.boardHighlightY = boardHighlightY
+                gSounds['select']:play()
+            end
+        end
 
         -- if we've pressed enter, to select or deselect a tile...
         if love.keyboard.wasPressed('enter') or love.keyboard.wasPressed('return') then
