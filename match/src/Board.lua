@@ -185,6 +185,9 @@ function Board:getFallingTiles()
     -- tween table, with tiles as keys and their x and y as the to values
     local tweens = {}
 
+    -- 20% chance to generate a shiny block
+    local shiny = math.random() > 0.8 and true or false
+
     -- for each column, go up tile by tile till we hit a space
     for x = 1, 8 do
         local space = false
@@ -233,6 +236,9 @@ function Board:getFallingTiles()
         end
     end
 
+    -- keep track of generated tiles
+    local newTiles = {}
+
     -- create replacement tiles at the top of the screen
     for x = 1, 8 do
         for y = 8, 1, -1 do
@@ -245,6 +251,7 @@ function Board:getFallingTiles()
                 local tile = self:newTile(x, y)
                 tile.y = -32
                 self.tiles[y][x] = tile
+                table.insert(newTiles, tile)
 
                 -- create a new tween to return for this tile to fall down
                 tweens[tile] = {
@@ -252,6 +259,10 @@ function Board:getFallingTiles()
                 }
             end
         end
+    end
+
+    if #newTiles ~= 0 and shiny then
+        newTiles[math.random(1, #newTiles)]:shinify()
     end
 
     return tweens

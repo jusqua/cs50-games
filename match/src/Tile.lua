@@ -24,24 +24,30 @@ function Tile:init(x, y, color, variety, shiny)
     self.y = (self.gridY - 1) * 32
 
     -- it's a shiny tile?
-    self.shiny = shiny ~= nil and shiny or false
+    self.shiny = false
     self.transitionColor = 1
 
     -- tile appearance/points
     self.color = color
     self.variety = variety
 
-    if self.shiny then
-        Timer.every(2, function ()
-            Timer.tween(1, {
-                [self] = { transitionColor = 0.5 }
-            }):finish(function()
-                Timer.tween(1, {
-                    [self] = { transitionColor = 1 }
-                })
-            end)
-        end)
+    if shiny then
+        self:shinify()
     end
+end
+
+function Tile:shinify()
+    self.shiny = true
+
+    Timer.every(2, function ()
+        Timer.tween(1, {
+            [self] = { transitionColor = 0.5 }
+        }):finish(function()
+            Timer.tween(1, {
+                [self] = { transitionColor = 1 }
+            })
+        end)
+    end)
 end
 
 function Tile:render(x, y)
