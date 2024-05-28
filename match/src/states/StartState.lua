@@ -75,6 +75,26 @@ function StartState:update(dt)
 
     -- as long as can still input, i.e., we're not in a transition...
     if not self.pauseInput then
+
+        -- select menu with mouse
+        local mouseInBounds = false
+        local mouseX, mouseY = love.mouse.getPosition()
+        mouseX, mouseY = push:toGame(mouseX, mouseY)
+
+        local menuX, menuY = VIRTUAL_WIDTH / 2 - 76, VIRTUAL_HEIGHT / 2 + 12
+        local menuW, menuH = 150, 58
+
+        if (mouseX >= menuX and mouseX <= menuX + menuW) and
+           (mouseY >= menuY and mouseY <= menuY + menuH) then
+            mouseInBounds = true
+            local currentMenuItem = (mouseY - menuY) >= 32 and 2 or 1
+
+            -- play sound if a different location is selected
+            if currentMenuItem ~= self.currentMenuItem then
+                self.currentMenuItem = currentMenuItem
+                gSounds['select']:play()
+            end
+        end
         
         -- change menu selection
         if love.keyboard.wasPressed('up') or love.keyboard.wasPressed('down') then
@@ -83,7 +103,8 @@ function StartState:update(dt)
         end
 
         -- switch to another state via one of the menu options
-        if love.keyboard.wasPressed('enter') or love.keyboard.wasPressed('return') then
+        if (love.keyboard.wasPressed('enter') or love.keyboard.wasPressed('return')) or
+           (mouseInBounds and love.mouse.wasPressed(1)) then
             if self.currentMenuItem == 1 then
                 
                 -- tween, using Timer, the transition rect's alpha to 1, then
