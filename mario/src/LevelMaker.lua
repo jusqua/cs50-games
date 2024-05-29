@@ -132,7 +132,11 @@ function LevelMaker.generate(width, height)
                             end
                         end
 
-                        local onConsume = function ()
+                        local onConsume = function (player, object)
+                            gStateMachine:change('play', {
+                                width = width + 10,
+                                player = player
+                            })
                             gSounds['powerup-reveal']:play()
                         end
 

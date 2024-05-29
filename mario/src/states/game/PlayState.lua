@@ -8,18 +8,20 @@
 PlayState = Class{__includes = BaseState}
 
 function PlayState:init()
+    self.gravityOn = true
+    self.gravityAmount = 6
+end
+
+function PlayState:enter(params)
     self.camX = 0
     self.camY = 0
-    self.level = LevelMaker.generate(100, 10)
+    self.width = params and params.width or 100
+    self.level = LevelMaker.generate(self.width, 10)
     self.tileMap = self.level.tileMap
     self.background = math.random(3)
     self.backgroundX = 0
 
-    self.gravityOn = true
-    self.gravityAmount = 6
-
-    self:spawnPlayer()
-
+    self:spawnPlayer(params and params.player or nil)
     self:spawnEnemies()
 end
 
@@ -78,7 +80,7 @@ function PlayState:updateCamera()
     self.backgroundX = (self.camX / 3) % 256
 end
 
-function PlayState:spawnPlayer()
+function PlayState:spawnPlayer(player)
     local playerX = -1
     for x = 1, self.tileMap.width do
         for y = 1, self.tileMap.height do
@@ -92,8 +94,7 @@ function PlayState:spawnPlayer()
         end
     end
 
-    self.player = Player({
-        x = playerX, y = 0,
+    self.player = player or Player({
         width = 16, height = 20,
         texture = 'green-alien',
         stateMachine = StateMachine {
@@ -101,10 +102,13 @@ function PlayState:spawnPlayer()
             ['walking'] = function() return PlayerWalkingState(self.player) end,
             ['jump'] = function() return PlayerJumpState(self.player, self.gravityAmount) end,
             ['falling'] = function() return PlayerFallingState(self.player, self.gravityAmount) end
-        },
-        map = self.tileMap,
-        level = self.level
+        }
     })
+
+    self.player.x = playerX
+    self.player.y = 0
+    self.player.map = self.tileMap
+    self.player.level = self.level
 
     self.player:changeState('falling')
 end
