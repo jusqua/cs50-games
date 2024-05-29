@@ -100,7 +100,7 @@ function LevelMaker.generate(width, height)
             end
 
             -- chance to spawn the lock
-            if lock and math.random(x, width / 2) == width / 2 then
+            if lock and math.random(x, math.floor(width / 2)) == x then
                 lockObj = GameObject {
                     texture = 'keys-and-locks',
                     x = (x - 1) * TILE_SIZE,
@@ -111,16 +111,93 @@ function LevelMaker.generate(width, height)
                     collidable = true,
                     consumable = false,
                     solid = true,
-                    onCollide = function () end,
+                    onCollide = function ()
+                        gSounds['empty-block']:play()
+                    end,
+                    -- generates the flag at the end of the scene
                     onConsume = function (obj)
-                        gSounds['powerup-reveal']:play()
+                        local texture = 'flags'
+                        local poleX = -1
+                        local poleY = -1
+                        for x = width - 1, 1, -1 do
+                            for y = 1, height do
+                                if tiles[y][x].id == TILE_ID_GROUND then
+                                    poleX = (x - 1) * TILE_SIZE
+                                    poleY = (y - 2) * TILE_SIZE
+                                    break
+                                end
+                            end
+                            if poleX ~= -1 then
+                                break
+                            end
+                        end
+
+                        local onConsume = function ()
+                            gSounds['powerup-reveal']:play()
+                        end
+
+                        local poleBaseObj = GameObject {
+                            texture = texture,
+                            x = poleX,
+                            y = poleY,
+                            width = TILE_SIZE,
+                            height = TILE_SIZE,
+                            frame = POLES[keyLockColor] + 18,
+                            collidable = true,
+                            consumable = true,
+                            solid = false,
+                            onConsume = onConsume
+                        }
+                        local poleCenterObj = GameObject {
+                            texture = texture,
+                            x = poleX,
+                            y = poleY - TILE_SIZE,
+                            width = TILE_SIZE,
+                            height = TILE_SIZE,
+                            frame = POLES[keyLockColor] + 9,
+                            collidable = true,
+                            consumable = true,
+                            solid = false,
+                            onConsume = onConsume
+                        }
+                        local poleHeadObj = GameObject {
+                            texture = texture,
+                            x = poleX,
+                            y = poleY - 2 * TILE_SIZE,
+                            width = TILE_SIZE,
+                            height = TILE_SIZE,
+                            frame = POLES[keyLockColor],
+                            collidable = true,
+                            consumable = true,
+                            solid = false,
+                            onConsume = onConsume
+                        }
+                        local flagObj = GameObject {
+                            texture = texture,
+                            x = poleX + TILE_SIZE / 2,
+                            y = poleY - 2 * TILE_SIZE + TILE_SIZE / 2,
+                            width = TILE_SIZE,
+                            height = TILE_SIZE,
+                            frame = FLAGS[keyLockColor],
+                            collidable = true,
+                            consumable = true,
+                            solid = false,
+                            onConsume = onConsume
+                        }
+
+                        table.insert(objects, poleBaseObj)
+                        table.insert(objects, poleCenterObj)
+                        table.insert(objects, poleHeadObj)
+                        table.insert(objects, flagObj)
+
+                        gSounds['death']:play()
                     end
                 } 
 
                 table.insert(objects, lockObj)
                 lock = false
             -- chance to spawn the key
-            elseif not lock and key and math.random(x, width - 5) == width - 5 then
+            elseif not lock and key and x >= width / 2 and math.random(x, width - 10) == x then
                 table.insert(objects, GameObject {
                     texture = 'keys-and-locks',
                     x = (x - 1) * TILE_SIZE,
@@ -134,7 +211,7 @@ function LevelMaker.generate(width, height)
                     onConsume = function (obj)
                         lockObj.consumable = true
                         lockObj.solid = false
-                        gSounds['powerup-reveal']:play()
+                        gSounds['pickup']:play()
                     end
                 })
                 key = false
