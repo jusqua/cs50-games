@@ -29,8 +29,13 @@ function GameObject:init(def, x, y)
     self.width = def.width
     self.height = def.height
 
+    -- states
+    self.consumable = def.consumable
+    self.liftable = def.liftable
+
     -- default empty collision callback
     self.onCollide = function() end
+    self.onConsume = function() end
 end
 
 --[[

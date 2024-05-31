@@ -30,6 +30,7 @@ GAME_OBJECT_DEFS = {
         frame = 5,
         width = 16,
         height = 16,
+        consumable = true,
         solid = false
     },
     ['pot'] = {
@@ -38,6 +39,7 @@ GAME_OBJECT_DEFS = {
         frame = 14,
         width = 16,
         height = 16,
-        solid = true
+        solid = true,
+        liftable = true
     }
 }

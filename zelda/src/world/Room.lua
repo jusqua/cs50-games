@@ -232,7 +232,7 @@ function Room:update(dt)
 
         -- trigger collision callback on object
         if self.player:collides(self.objects[i]) then
-            if self.objects[i].onConsume then
+            if self.objects[i].consumable then
                 self.objects[i]:onConsume(self.player)
                 table.remove(self.objects, i)
             else
