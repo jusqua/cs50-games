@@ -33,6 +33,14 @@ function GameObject:init(def, x, y)
     self.onCollide = function() end
 end
 
+--[[
+    AABB with some slight shrinkage of the box on the top side for perspective.
+]]
+function GameObject:collides(target)
+    return not (self.x + self.width < target.x or self.x > target.x + target.width or
+                self.y + self.height < target.y or self.y > target.y + target.height)
+end
+
 function GameObject:update(dt)
 
 end
