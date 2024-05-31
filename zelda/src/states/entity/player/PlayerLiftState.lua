@@ -17,6 +17,12 @@ end
 function PlayerLiftState:enter(params)
     self.object = params.object
     gSounds['lift']:play()
+    Timer.tween(0.3, {
+        [self.object] = {
+            x = self.player.x, 
+            y = self.player.y - 10,
+        },
+    })
 end
 
 function PlayerLiftState:update(dt)
@@ -31,4 +37,11 @@ function PlayerLiftState:render()
     local anim = self.player.currentAnimation
     love.graphics.draw(gTextures[anim.texture], gFrames[anim.texture][anim:getCurrentFrame()],
         math.floor(self.player.x - self.player.offsetX), math.floor(self.player.y - self.player.offsetY))
+
+    love.graphics.draw(
+        gTextures[self.object.texture],
+        gFrames[self.object.texture][self.object.states and self.object.states[self.state].frame or self.object.frame],
+        self.object.x,
+        self.object.y
+    )
 end

@@ -123,4 +123,21 @@ function PlayerWalkState:update(dt)
             self.entity.y = self.entity.y - PLAYER_WALK_SPEED * dt
         end
     end
+
+    if self.object then
+        self.object.x = math.floor(self.entity.x)
+        self.object.y = math.floor(self.entity.y - 10)
+    end
+end
+
+function PlayerWalkState:render()
+    EntityWalkState.render(self)
+    if self.object then
+        love.graphics.draw(
+            gTextures[self.object.texture],
+            gFrames[self.object.texture][self.object.states and self.object.states[self.state].frame or self.object.frame],
+            self.object.x,
+            self.object.y
+        )
+    end
 end

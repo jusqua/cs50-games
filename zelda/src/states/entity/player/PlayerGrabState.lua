@@ -56,8 +56,9 @@ end
 
 function PlayerGrabState:update(dt)
     -- check if hitbox collides with any objects in the scene
-    for _, object in pairs(self.dungeon.currentRoom.objects) do
+    for i, object in ipairs(self.dungeon.currentRoom.objects) do
         if object.liftable and object:collides(self.grabHitbox) then
+            table.remove(self.dungeon.currentRoom.objects, i)
             self.player:changeState('lift', { object = object })
         end
     end

@@ -35,3 +35,15 @@ function PlayerIdleState:update(dt)
         end
     end
 end
+
+function PlayerIdleState:render()
+    EntityIdleState.render(self)
+    if self.object then
+        love.graphics.draw(
+            gTextures[self.object.texture],
+            gFrames[self.object.texture][self.object.states and self.object.states[self.state].frame or self.object.frame],
+            self.object.x,
+            self.object.y
+        )
+    end
+end
