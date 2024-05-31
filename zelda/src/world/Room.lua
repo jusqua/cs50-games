@@ -198,19 +198,19 @@ function Room:update(dt)
 
         -- check entity collision with objects
         for _, object in pairs(self.objects) do
-            if object.solid then
+            if entity:collides(object) and object.solid then
                 -- compute top collision
                 if entity.direction == 'down' then
-                    entity.y = entity.y - entity.walkSpeed * dt
+                    entity.direction = 'up'
                 -- compute bottom collision
                 elseif entity.direction == 'up' then
-                    entity.y = entity.y + entity.walkSpeed * dt
+                    entity.direction = 'down'
                 -- compute left collision
                 elseif entity.direction == 'right' then
-                    entity.x = entity.x - entity.walkSpeed * dt
+                    entity.direction = 'left'
                 -- compute right collision
                 elseif entity.direction == 'left' then
-                    entity.x = entity.x + entity.walkSpeed * dt
+                    entity.direction = 'right'
                 end
             end
         end
