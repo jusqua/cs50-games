@@ -102,6 +102,21 @@ function Room:generateObjects()
         end
     end
 
+    -- add pots randomly to the room
+    local pots = math.random(1, 4)
+    for i = 1, pots do
+        local pot = GameObject(
+            GAME_OBJECT_DEFS['pot'],
+            math.random(MAP_RENDER_OFFSET_X + TILE_SIZE,
+                        VIRTUAL_WIDTH - TILE_SIZE * 2 - 16),
+            math.random(MAP_RENDER_OFFSET_Y + TILE_SIZE,
+                        VIRTUAL_HEIGHT - (VIRTUAL_HEIGHT - MAP_HEIGHT * TILE_SIZE) + MAP_RENDER_OFFSET_Y - TILE_SIZE - 16)
+        )
+        if pot.x ~= switch.x and pot.y ~= switch.y then
+            table.insert(self.objects, pot)
+        end
+    end
+
     -- add to list of objects in scene (only one switch for now)
     table.insert(self.objects, switch)
 end
@@ -172,6 +187,25 @@ function Room:update(dt)
             entity:update(dt)
         end
 
+        -- check entity collision with objects
+        for _, object in pairs(self.objects) do
+            if object.solid then
+                -- compute top collision
+                if entity.direction == 'down' then
+                    entity.y = entity.y - entity.walkSpeed * dt
+                -- compute bottom collision
+                elseif entity.direction == 'up' then
+                    entity.y = entity.y + entity.walkSpeed * dt
+                -- compute left collision
+                elseif entity.direction == 'right' then
+                    entity.x = entity.x - entity.walkSpeed * dt
+                -- compute right collision
+                elseif entity.direction == 'left' then
+                    entity.x = entity.x + entity.walkSpeed * dt
+                end
+            end
+        end
+
         -- collision between the player and entities in the room
         if not entity.dead and self.player:collides(entity) and not self.player.invulnerable then
             gSounds['hit-player']:play()
@@ -194,6 +228,21 @@ function Room:update(dt)
                 table.remove(self.objects, i)
             else
                 self.objects[i]:onCollide()
+                if self.objects[i].solid then
+                    -- compute top collision
+                    if self.player.direction == 'down' then
+                        self.player.y = self.player.y - self.player.walkSpeed * dt
+                    -- compute bottom collision
+                    elseif self.player.direction == 'up' then
+                        self.player.y = self.player.y + self.player.walkSpeed * dt
+                    -- compute left collision
+                    elseif self.player.direction == 'right' then
+                        self.player.x = self.player.x - self.player.walkSpeed * dt
+                    -- compute right collision
+                    elseif self.player.direction == 'left' then
+                        self.player.x = self.player.x + self.player.walkSpeed * dt
+                    end
+                end
             end
         end
     end
