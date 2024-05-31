@@ -11,31 +11,41 @@ PlayerWalkState = Class{__includes = EntityWalkState}
 function PlayerWalkState:init(player, dungeon)
     self.entity = player
     self.dungeon = dungeon
+    self.framePrefix = 'walk-'
 
     -- render offset for spaced character sprite; negated in render function of state
     self.entity.offsetY = 5
     self.entity.offsetX = 0
 end
 
+function PlayerWalkState:enter(params)
+    if params and params.object then
+        self.object = params.object
+        self.framePrefix = 'pot-walk-'
+    end
+end
+
 function PlayerWalkState:update(dt)
     if love.keyboard.isDown('left') then
         self.entity.direction = 'left'
-        self.entity:changeAnimation('walk-left')
+        self.entity:changeAnimation(self.framePrefix..'left')
     elseif love.keyboard.isDown('right') then
         self.entity.direction = 'right'
-        self.entity:changeAnimation('walk-right')
+        self.entity:changeAnimation(self.framePrefix..'right')
     elseif love.keyboard.isDown('up') then
         self.entity.direction = 'up'
-        self.entity:changeAnimation('walk-up')
+        self.entity:changeAnimation(self.framePrefix..'up')
     elseif love.keyboard.isDown('down') then
         self.entity.direction = 'down'
-        self.entity:changeAnimation('walk-down')
+        self.entity:changeAnimation(self.framePrefix..'down')
     else
-        self.entity:changeState('idle')
+        self.entity:changeState('idle', { object = self.object })
     end
 
-    if love.keyboard.wasPressed('space') then
-        self.entity:changeState('swing-sword')
+    if not self.object then
+        if love.keyboard.wasPressed('space') then
+            self.entity:changeState('swing-sword')
+        end
     end
 
     -- perform base collision detection against walls

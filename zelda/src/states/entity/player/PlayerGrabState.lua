@@ -16,6 +16,9 @@ function PlayerGrabState:init(player, dungeon)
     local direction = self.player.direction
     local hitboxX, hitboxY, hitboxWidth, hitboxHeight
 
+    self.player.offsetY = 5
+    self.player.offsetX = 0
+
     if direction == 'left' then
         hitboxWidth = 8
         hitboxHeight = 16
@@ -55,6 +58,7 @@ function PlayerGrabState:update(dt)
     -- check if hitbox collides with any objects in the scene
     for _, object in pairs(self.dungeon.currentRoom.objects) do
         if object.liftable and object:collides(self.grabHitbox) then
+            self.player:changeState('lift', { object = object })
         end
     end
 
