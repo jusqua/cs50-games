@@ -35,7 +35,7 @@ function PlayState:init()
         ['swing-sword'] = function() return PlayerSwingSwordState(self.player, self.dungeon) end,
         ['grab'] = function() return PlayerGrabState(self.player, self.dungeon) end,
         ['lift'] = function() return PlayerLiftState(self.player) end,
-        ['throw'] = function() return PlayerThrowState(self.player) end
+        ['throw'] = function() return PlayerThrowState(self.player, self.dungeon) end
     }
     self.player:changeState('idle')
 end

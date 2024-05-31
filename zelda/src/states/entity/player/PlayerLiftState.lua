@@ -17,12 +17,13 @@ end
 function PlayerLiftState:enter(params)
     self.object = params.object
     gSounds['lift']:play()
+
     Timer.tween(0.3, {
         [self.object] = {
             x = self.player.x, 
             y = self.player.y - 10,
         },
-    -- ease object lifting to not make
+    -- ease object lifting
     }):ease(function(t, b, c, d)
       t = t / d
       return math.floor(-c * t * (t - 2) + b)

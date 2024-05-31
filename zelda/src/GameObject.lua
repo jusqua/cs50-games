@@ -32,6 +32,7 @@ function GameObject:init(def, x, y)
     -- states
     self.consumable = def.consumable
     self.liftable = def.liftable
+    self.projectile = false
 
     -- default empty collision callback
     self.onCollide = function() end
@@ -53,4 +54,20 @@ end
 function GameObject:render(adjacentOffsetX, adjacentOffsetY)
     love.graphics.draw(gTextures[self.texture], gFrames[self.texture][self.states and self.states[self.state].frame or self.frame],
         self.x + adjacentOffsetX, self.y + adjacentOffsetY)
+end
+
+function GameObject:fire(dx, dy)
+    self.projectile = true
+
+    gSounds["fire"]:play()
+
+    Timer.tween(0.5, {
+        [self] = {
+            x = self.x + dx * TILE_SIZE * 4,
+            y = self.y + dy * TILE_SIZE * 4
+        }
+    -- ease object lifting
+    }):ease(function(t, b, c, d)
+      return math.floor(c * t / d + b)
+    end)
 end
