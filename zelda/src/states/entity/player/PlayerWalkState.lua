@@ -42,9 +42,15 @@ function PlayerWalkState:update(dt)
         self.entity:changeState('idle', { object = self.object })
     end
 
-    if not self.object then
+    if self.object then
+        if love.keyboard.wasPressed('enter') or love.keyboard.wasPressed('return') then
+            self.entity:changeState('throw', { object = self.object })
+        end
+    else
         if love.keyboard.wasPressed('space') then
             self.entity:changeState('swing-sword')
+        elseif love.keyboard.wasPressed('enter') or love.keyboard.wasPressed('return') then
+            self.entity:changeState('grab')
         end
     end
 

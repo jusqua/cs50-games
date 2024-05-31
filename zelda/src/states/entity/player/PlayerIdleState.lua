@@ -26,7 +26,9 @@ function PlayerIdleState:update(dt)
     end
 
     if self.object then
-        -- TODO
+        if love.keyboard.wasPressed('enter') or love.keyboard.wasPressed('return') then
+            self.entity:changeState('throw', { object = self.object })
+        end
     else
         if love.keyboard.wasPressed('space') then
             self.entity:changeState('swing-sword')

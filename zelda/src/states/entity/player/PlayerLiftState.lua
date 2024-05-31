@@ -22,7 +22,11 @@ function PlayerLiftState:enter(params)
             x = self.player.x, 
             y = self.player.y - 10,
         },
-    })
+    -- ease object lifting to not make
+    }):ease(function(t, b, c, d)
+      t = t / d
+      return math.floor(-c * t * (t - 2) + b)
+    end)
 end
 
 function PlayerLiftState:update(dt)
