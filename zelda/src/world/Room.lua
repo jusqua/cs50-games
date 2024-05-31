@@ -197,20 +197,25 @@ function Room:update(dt)
         end
 
         -- check entity collision with objects
-        for _, object in pairs(self.objects) do
-            if entity:collides(object) and object.solid then
-                -- compute top collision
-                if entity.direction == 'down' then
-                    entity.direction = 'up'
-                -- compute bottom collision
-                elseif entity.direction == 'up' then
-                    entity.direction = 'down'
-                -- compute left collision
-                elseif entity.direction == 'right' then
-                    entity.direction = 'left'
-                -- compute right collision
-                elseif entity.direction == 'left' then
-                    entity.direction = 'right'
+        for i = #self.objects, 1, -1 do
+            if entity:collides(self.objects[i]) then
+                if self.objects[i].projectile then
+                    entity:damage(1)
+                    self.objects[i]:destroy()
+                elseif self.objects[i].solid then
+                    -- compute top collision
+                    if entity.direction == 'down' then
+                        entity.direction = 'up'
+                    -- compute bottom collision
+                    elseif entity.direction == 'up' then
+                        entity.direction = 'down'
+                    -- compute left collision
+                    elseif entity.direction == 'right' then
+                        entity.direction = 'left'
+                    -- compute right collision
+                    elseif entity.direction == 'left' then
+                        entity.direction = 'right'
+                    end
                 end
             end
         end
@@ -228,8 +233,19 @@ function Room:update(dt)
     end
 
     for i = #self.objects, 1, -1 do
-        self.objects[i]:update(dt)
+        local object = self.objects[i]
+        object:update(dt)
 
+        -- verify out of bounds projectiles
+        if object.projectile then
+            -- check if projectile hit a wall
+            if (object.dx < 0 and object.x <= MAP_RENDER_OFFSET_X + TILE_SIZE) or
+               (object.dx > 0 and object.x + object.width >= VIRTUAL_WIDTH - TILE_SIZE * 2) or
+               (object.dy < 0 and object.y <= MAP_RENDER_OFFSET_Y + TILE_SIZE - object.height / 2) or
+               (object.dy > 0 and object.y + object.height >= VIRTUAL_HEIGHT - (VIRTUAL_HEIGHT - MAP_HEIGHT * TILE_SIZE) + MAP_RENDER_OFFSET_Y - TILE_SIZE) then
+                object:destroy()
+            end
+        end
         -- trigger collision callback on object
         if self.player:collides(self.objects[i]) then
             if self.objects[i].consumable then
@@ -253,6 +269,11 @@ function Room:update(dt)
                     end
                 end
             end
+        end
+
+        -- verify unused objects
+        if object.unused then
+            table.remove(self.objects, i)
         end
     end
 end

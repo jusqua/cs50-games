@@ -80,5 +80,6 @@ gSounds = {
     ['pickup'] = love.audio.newSource('sounds/pickup.wav', 'static'),
     ['grab'] = love.audio.newSource('sounds/grab.wav', 'static'),
     ['lift'] = love.audio.newSource('sounds/lift.wav', 'static'),
-    ['fire'] = love.audio.newSource('sounds/fire.wav', 'static')
+    ['fire'] = love.audio.newSource('sounds/fire.wav', 'static'),
+    ['broken'] = love.audio.newSource('sounds/broken.wav', 'static')
 }

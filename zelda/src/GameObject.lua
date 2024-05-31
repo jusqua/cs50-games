@@ -33,6 +33,7 @@ function GameObject:init(def, x, y)
     self.consumable = def.consumable
     self.liftable = def.liftable
     self.projectile = false
+    self.unused = false
 
     -- default empty collision callback
     self.onCollide = function() end
@@ -56,8 +57,20 @@ function GameObject:render(adjacentOffsetX, adjacentOffsetY)
         self.x + adjacentOffsetX, self.y + adjacentOffsetY)
 end
 
+-- unuse projectile
+function GameObject:destroy()
+    gSounds["broken"]:play()
+    self.projectile = false
+    self.unused = true
+end
+
+-- fire object as projectile
 function GameObject:fire(dx, dy)
     self.projectile = true
+    self.solid = false
+
+    self.dx = dx
+    self.dy = dy
 
     gSounds["fire"]:play()
 
@@ -69,5 +82,7 @@ function GameObject:fire(dx, dy)
     -- ease object lifting
     }):ease(function(t, b, c, d)
       return math.floor(c * t / d + b)
+    end):finish(function ()
+        self:destroy()
     end)
 end
