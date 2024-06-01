@@ -180,8 +180,10 @@ function Level:update(dt)
             local xPos, yPos = alien.body:getPosition()
             local xVel, yVel = alien.body:getLinearVelocity()
 
-            -- if we fired our alien to the left or almost stopped
-            if xPos < 0 or (math.abs(xVel) + math.abs(yVel) < 2) then
+            -- if we fired our alien out of bounds or almost stopped
+            if (xPos < -VIRTUAL_WIDTH / 4) or
+               (xPos > VIRTUAL_WIDTH + VIRTUAL_WIDTH / 4) or
+               (math.abs(xVel) + math.abs(yVel) < 2) then
                 stopped = stopped + 1
             end
         end
