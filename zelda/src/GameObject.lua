@@ -59,6 +59,10 @@ end
 
 -- unuse projectile
 function GameObject:destroy()
+    if self.unused then
+        return
+    end
+
     gSounds["broken"]:play()
     self.projectile = false
     self.unused = true
