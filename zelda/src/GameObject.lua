@@ -68,6 +68,7 @@ end
 function GameObject:fire(dx, dy)
     self.projectile = true
     self.solid = false
+    self.liftable = false
 
     self.dx = dx
     self.dy = dy
