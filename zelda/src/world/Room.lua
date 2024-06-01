@@ -217,16 +217,16 @@ function Room:update(dt)
                 elseif self.objects[i].solid then
                     -- compute top collision
                     if entity.direction == 'down' then
-                        entity.direction = 'up'
+                        entity.y = entity.y - entity.walkSpeed * dt
                         -- compute bottom collision
                     elseif entity.direction == 'up' then
-                        entity.direction = 'down'
+                        entity.y = entity.y + entity.walkSpeed * dt
                         -- compute left collision
                     elseif entity.direction == 'right' then
-                        entity.direction = 'left'
+                        entity.x = entity.x - entity.walkSpeed * dt
                         -- compute right collision
                     elseif entity.direction == 'left' then
-                        entity.direction = 'right'
+                        entity.x = entity.x + entity.walkSpeed * dt
                     end
                 end
             end
