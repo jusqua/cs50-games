@@ -124,6 +124,13 @@ function Room:generateObjects()
             end
         end
 
+        for _, entity in pairs(self.entities) do
+            if pot:collides(entity) then
+                found = true
+                break
+            end
+        end
+
         if not found then
             table.insert(self.objects, pot)
         end
