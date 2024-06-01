@@ -18,6 +18,9 @@ function Level:init()
     -- actual collision callbacks can cause stack overflow and other errors
     self.destroyedBodies = {}
 
+    -- shows alien before being launched and its trajectory arrow
+    self.launchMarker = AlienLaunchMarker(self.world)
+
     -- define collision callbacks for our world; the World object expects four,
     -- one for different stages of any given collision
     function beginContact(a, b, coll)
@@ -27,6 +30,7 @@ function Level:init()
 
         -- if we collided between both the player and an obstacle...
         if types['Obstacle'] and types['Player'] then
+            self.launchMarker.splitted = true
 
             -- grab the body that belongs to the player
             local playerFixture = a:getUserData() == 'Player' and a or b
@@ -59,6 +63,7 @@ function Level:init()
 
         -- if we collided between the player and the alien...
         if types['Player'] and types['Alien'] then
+            self.launchMarker.splitted = true
 
             -- grab the bodies that belong to the player and alien
             local playerFixture = a:getUserData() == 'Player' and a or b
@@ -75,6 +80,7 @@ function Level:init()
 
         -- if we hit the ground, play a bounce sound
         if types['Player'] and types['Ground'] then
+            self.launchMarker.splitted = true
             gSounds['bounce']:stop()
             gSounds['bounce']:play()
         end
@@ -97,9 +103,6 @@ function Level:init()
 
     -- register just-defined functions as collision callbacks for world
     self.world:setCallbacks(beginContact, endContact, preSolve, postSolve)
-
-    -- shows alien before being launched and its trajectory arrow
-    self.launchMarker = AlienLaunchMarker(self.world)
 
     -- aliens in our scene
     self.aliens = {}
