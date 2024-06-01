@@ -81,7 +81,7 @@ function AlienLaunchMarker:update(dt)
                 original.fixture:getUserData()
             )
 
-            alien.body:setX(original.body:getX())
+            alien.body:setX(original.body:getX() + ALIEN_SIZE / 3)
             alien.body:setY(original.body:getY() + i * 5 * ALIEN_SIZE / 4)
             alien.body:setLinearVelocity(original.body:getLinearVelocity())
             alien.body:setAngularVelocity(original.body:getAngularVelocity())
