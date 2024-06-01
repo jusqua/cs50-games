@@ -172,19 +172,28 @@ function Level:update(dt)
 
     -- replace launch marker if the original aliens stopped moving
     if self.launchMarker.launched then
+        local stopped = 0
         for _, alien in pairs(self.launchMarker.aliens) do
             local xPos, yPos = alien.body:getPosition()
             local xVel, yVel = alien.body:getLinearVelocity()
 
-            -- if we fired our alien to the left or it's almost done rolling, respawn
-            if xPos < 0 or (math.abs(xVel) + math.abs(yVel) < 1.5) then
-                alien.body:destroy()
-                self.launchMarker = AlienLaunchMarker(self.world)
+            -- if we fired our alien to the left or almost stopped
+            if xPos < 0 or (math.abs(xVel) + math.abs(yVel) < 2) then
+                stopped = stopped + 1
+            end
+        end
 
-                -- re-initialize level if we have no more aliens
-                if #self.aliens == 0 then
-                    gStateMachine:change('start')
-                end
+        if stopped == #self.launchMarker.aliens then
+            for _, alien in pairs(self.launchMarker.aliens) do
+                alien.body:destroy()
+            end
+
+            -- re-initialize level if we have no more aliens
+            if #self.aliens == 0 then
+                gStateMachine:change('start')
+            -- if not reset launcher
+            else
+                self.launchMarker = AlienLaunchMarker(self.world)
             end
         end
     end
