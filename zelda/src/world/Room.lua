@@ -180,8 +180,12 @@ function Room:update(dt)
     for i = #self.entities, 1, -1 do
         local entity = self.entities[i]
 
+        if entity.dead then
+            goto continue
+        end
+
         -- remove entity from the table if health is <= 0
-        if entity.health <= 0 and not entity.dead then
+        if entity.health <= 0 then
             if math.random() > 0.95 then
                 local heart = GameObject(GAME_OBJECT_DEFS['heart'], entity.x, entity.y)
                 heart.onConsume = function (self, player)
@@ -191,10 +195,11 @@ function Room:update(dt)
                 table.insert(self.objects, heart)
             end
             entity.dead = true
-        elseif not entity.dead then
-            entity:processAI({room = self}, dt)
-            entity:update(dt)
+            goto continue
         end
+
+        entity:processAI({room = self}, dt)
+        entity:update(dt)
 
         -- check entity collision with objects
         for i = #self.objects, 1, -1 do
@@ -206,13 +211,13 @@ function Room:update(dt)
                     -- compute top collision
                     if entity.direction == 'down' then
                         entity.direction = 'up'
-                    -- compute bottom collision
+                        -- compute bottom collision
                     elseif entity.direction == 'up' then
                         entity.direction = 'down'
-                    -- compute left collision
+                        -- compute left collision
                     elseif entity.direction == 'right' then
                         entity.direction = 'left'
-                    -- compute right collision
+                        -- compute right collision
                     elseif entity.direction == 'left' then
                         entity.direction = 'right'
                     end
@@ -221,7 +226,7 @@ function Room:update(dt)
         end
 
         -- collision between the player and entities in the room
-        if not entity.dead and self.player:collides(entity) and not self.player.invulnerable then
+        if self.player:collides(entity) and not self.player.invulnerable then
             gSounds['hit-player']:play()
             self.player:damage(1)
             self.player:goInvulnerable(1.5)
@@ -230,6 +235,8 @@ function Room:update(dt)
                 gStateMachine:change('game-over')
             end
         end
+
+        ::continue::
     end
 
     for i = #self.objects, 1, -1 do
