@@ -24,9 +24,10 @@ function AlienLaunchMarker:init(world)
 
     -- whether we launched the alien and should stop rendering the preview
     self.launched = false
+    self.splitted = false
 
-    -- our alien we will eventually spawn
-    self.alien = nil
+    -- our aliens we will eventually spawn
+    self.aliens = {}
 end
 
 function AlienLaunchMarker:update(dt)
@@ -46,14 +47,18 @@ function AlienLaunchMarker:update(dt)
             self.launched = true
 
             -- spawn new alien in the world, passing in user data of player
-            self.alien = Alien(self.world, 'round', self.shiftedX, self.shiftedY, 'Player')
+            local alien = Alien(self.world, 'round', self.shiftedX, self.shiftedY, 'Player')
+            alien.splittable = true
 
             -- apply the difference between current X,Y and base X,Y as launch vector impulse
-            self.alien.body:setLinearVelocity((self.baseX - self.shiftedX) * 10, (self.baseY - self.shiftedY) * 10)
+            alien.body:setLinearVelocity((self.baseX - self.shiftedX) * 10, (self.baseY - self.shiftedY) * 10)
 
             -- make the alien pretty bouncy
-            self.alien.fixture:setRestitution(0.4)
-            self.alien.body:setAngularDamping(1)
+            alien.fixture:setRestitution(0.4)
+            alien.body:setAngularDamping(1)
+
+            -- attach new alien to the table
+            table.insert(self.aliens, alien)
 
             -- we're no longer aiming
             self.aiming = false
@@ -103,6 +108,8 @@ function AlienLaunchMarker:render()
         
         love.graphics.setColor(1, 1, 1, 1)
     else
-        self.alien:render()
+        for _, alien in pairs(self.aliens) do
+            alien:render()
+        end
     end
 end
