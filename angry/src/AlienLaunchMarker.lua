@@ -69,6 +69,24 @@ function AlienLaunchMarker:update(dt)
             self.shiftedX = math.min(self.baseX + 30, math.max(x, self.baseX - 30))
             self.shiftedY = math.min(self.baseY + 30, math.max(y, self.baseY - 30))
         end
+    elseif not self.splitted and love.keyboard.wasPressed('space') then
+        self.splitted = true
+        local original = self.aliens[1]
+        for i = -1, 1, 2 do
+            local alien = Alien(
+                original.world,
+                original.type,
+                original.body:getX(),
+                original.body:getY(),
+                original.fixture:getUserData()
+            )
+
+            alien.body:setX(original.body:getX())
+            alien.body:setY(original.body:getY() + i * 5 * ALIEN_SIZE / 4)
+            alien.body:setLinearVelocity(original.body:getLinearVelocity())
+            alien.body:setAngularVelocity(original.body:getAngularVelocity())
+            table.insert(self.aliens, alien)
+        end
     end
 end
 
