@@ -56,43 +56,42 @@ end
     the increases so they can be displayed in the TakeTurnState on level up.
 ]]
 function Pokemon:statsLevelUp()
-    local HPIncrease = 0
+    local levelUp = {
+        hp = { current = self.HP, increase = 0, next = nil },
+        attack = { current = self.attack, increase = 0, next = nil },
+        defense = { current = self.defense, increase = 0, next = nil },
+        speed = { current = self.speed, increase = 0, next = nil }
+    }
 
     for j = 1, 3 do
         if math.random(6) <= self.HPIV then
-            self.HP = self.HP + 1
-            HPIncrease = HPIncrease + 1
+            levelUp.hp.increase = levelUp.hp.increase + 1
         end
-    end
 
-    local attackIncrease = 0
-
-    for j = 1, 3 do
         if math.random(6) <= self.attackIV then
-            self.attack = self.attack + 1
-            attackIncrease = attackIncrease + 1
+            levelUp.attack.increase = levelUp.attack.increase + 1
         end
-    end
 
-    local defenseIncrease = 0
-
-    for j = 1, 3 do
         if math.random(6) <= self.defenseIV then
-            self.defense = self.defense + 1
-            defenseIncrease = defenseIncrease + 1
+            levelUp.defense.increase = levelUp.defense.increase + 1
         end
-    end
 
-    local speedIncrease = 0
-
-    for j = 1, 3 do
         if math.random(6) <= self.speedIV then
-            self.speed = self.speed + 1
-            speedIncrease = speedIncrease + 1
+            levelUp.speed.increase = levelUp.speed.increase + 1
         end
     end
 
-    return HPIncrease, attackIncrease, defenseIncrease, speedIncrease
+    self.HP = levelUp.hp.current + levelUp.hp.increase
+    self.attack = levelUp.attack.current + levelUp.attack.increase
+    self.defense = levelUp.defense.current + levelUp.defense.increase
+    self.speed = levelUp.speed.current + levelUp.speed.increase
+
+    levelUp.hp.new = self.HP
+    levelUp.attack.new = self.attack
+    levelUp.defense.new = self.defense
+    levelUp.speed.new = self.speed
+
+    return levelUp
 end
 
 function Pokemon:levelUp()
