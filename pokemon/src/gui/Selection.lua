@@ -21,7 +21,7 @@ function Selection:init(def)
     self.height = def.height
     self.width = def.width
     self.font = def.font or gFonts['small']
-    self.hasSelection = def.hasSelection or true
+    self.hasSelection = def.hasSelection ~= false and true or false
 
     self.gapHeight = self.height / #self.items
 
