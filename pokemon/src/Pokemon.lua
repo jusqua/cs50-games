@@ -86,10 +86,10 @@ function Pokemon:statsLevelUp()
     self.defense = levelUp.defense.current + levelUp.defense.increase
     self.speed = levelUp.speed.current + levelUp.speed.increase
 
-    levelUp.hp.new = self.HP
-    levelUp.attack.new = self.attack
-    levelUp.defense.new = self.defense
-    levelUp.speed.new = self.speed
+    levelUp.hp.next = self.HP
+    levelUp.attack.next = self.attack
+    levelUp.defense.next = self.defense
+    levelUp.speed.next = self.speed
 
     return levelUp
 end
