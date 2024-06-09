@@ -4,12 +4,13 @@ using System.Collections;
 public class SkyscraperSpawner : MonoBehaviour {
 
 	public GameObject[] prefabs;
-	public static float speed = 10f;
+	public static float speed;
 
 	// Use this for initialization
 	void Start () {
 
 		// aysnchronous infinite skyscraper spawning
+		speed = 10f;
 		StartCoroutine(SpawnSkyscrapers());
 	}
 
