@@ -36,6 +36,11 @@ public class LevelGenerator : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
+		// generate at most 4 pitfalls
+		int pitfalls = Random.Range(3, 5);
+		int pitfallGap = tilesToRemove / pitfalls;
+		int counter = pitfallGap;
+
 		// initialize map 2D array
 		mapData = GenerateMazeData();
 
@@ -52,14 +57,22 @@ public class LevelGenerator : MonoBehaviour {
 					characterController.transform.SetPositionAndRotation(
 						new Vector3(x, 1, z), Quaternion.identity
 					);
-
 					// flag as placed so we never consider placing again
 					characterPlaced = true;
 				}
 
-				// create floor and ceiling
-				CreateChildPrefab(floorPrefab, floorParent, x, 0, z);
+				// create pitfall
+				if (pitfalls > 0 && counter <= 0 && !mapData[z, x] && x != mazeX && z != mazeY) {
+					pitfalls--;
+					counter = pitfallGap;
+				}
+				// create floor
+				else {
+					CreateChildPrefab(floorPrefab, floorParent, x, 0, z);
+					counter--;
+				}
 
+				// create ceiling
 				if (generateRoof) {
 					CreateChildPrefab(ceilingPrefab, wallsParent, x, 4, z);
 				}
