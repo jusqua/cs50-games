@@ -28,8 +28,8 @@ public class GemSpawner : MonoBehaviour
 			    Quaternion.identity
 			);
 
-			// pause 10-20 seconds until the next gem spawns
-			yield return new WaitForSeconds(Random.Range(10, 15));
+			// pause 20-25 seconds until the next gem spawns
+			yield return new WaitForSeconds(Random.Range(20, 25));
 		}
 	}
 }
