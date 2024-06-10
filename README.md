@@ -12,3 +12,4 @@ Don't copy and paste any of these files, try to solve any problems by yourself.
 * Legend of Zelda → [Submission](zelda) and [Screencast](https://youtu.be/YxZW-YbEQOE)
 * Angry Birds → [Submission](angry) and [Screencast](https://youtu.be/ZurAjopNQNw)
 * Pokémon → [Submission](pokemon) and [Screencast](https://youtu.be/TIT_d20pZuU)
+* Helicopter Game 3D → [Submission](helicopter) and [Screencast](https://youtu.be/S29ZDYpxwDg)
