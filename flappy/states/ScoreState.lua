@@ -12,15 +12,15 @@ ScoreState = Class{__includes = BaseState}
 
 local medals = {
     {
-        sprite = love.graphics.newImage('images/bronze-medal.png'),
+        sprite = love.graphics.newImage('bronze-medal.png'),
         minScore = 0
     },
     {
-        sprite = love.graphics.newImage('images/silver-medal.png'),
+        sprite = love.graphics.newImage('silver-medal.png'),
         minScore = 5
     },
     {
-        sprite = love.graphics.newImage('images/gold-medal.png'),
+        sprite = love.graphics.newImage('gold-medal.png'),
         minScore = 10
     },
 }

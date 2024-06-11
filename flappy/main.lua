@@ -19,18 +19,18 @@
 -- a more retro aesthetic
 --
 -- https://github.com/Ulydev/push
-push = require 'external.push'
+push = require 'push'
 
 -- the "Class" library we're using will allow us to represent anything in
 -- our game as code, rather than keeping track of many disparate variables and
 -- methods
 --
 -- https://github.com/vrld/hump/blob/master/class.lua
-Class = require 'external.class'
+Class = require 'class'
 
 -- a basic StateMachine class which will allow us to transition to and from
 -- game states smoothly and avoid monolithic code in one file
-require 'external.StateMachine'
+require 'StateMachine'
 
 -- all states our StateMachine can transition between
 require 'states.BaseState'
@@ -40,9 +40,9 @@ require 'states.ScoreState'
 require 'states.PauseState'
 require 'states.TitleScreenState'
 
-require 'objects.Bird'
-require 'objects.Pipe'
-require 'objects.PipePair'
+require 'Bird'
+require 'Pipe'
+require 'PipePair'
 
 -- physical screen dimensions
 WINDOW_WIDTH = 1280
@@ -54,10 +54,10 @@ VIRTUAL_HEIGHT = 288
 
 scrolling = true
 
-local background = love.graphics.newImage('images/background.png')
+local background = love.graphics.newImage('background.png')
 local backgroundScroll = 0
 
-local ground = love.graphics.newImage('images/ground.png')
+local ground = love.graphics.newImage('ground.png')
 local groundScroll = 0
 
 local BACKGROUND_SCROLL_SPEED = 30
@@ -76,22 +76,22 @@ function love.load()
     love.window.setTitle('Fifty Bird')
 
     -- initialize our nice-looking retro text fonts
-    smallFont = love.graphics.newFont('fonts/font.ttf', 8)
-    mediumFont = love.graphics.newFont('fonts/flappy.ttf', 14)
-    flappyFont = love.graphics.newFont('fonts/flappy.ttf', 28)
-    hugeFont = love.graphics.newFont('fonts/flappy.ttf', 56)
+    smallFont = love.graphics.newFont('font.ttf', 8)
+    mediumFont = love.graphics.newFont('flappy.ttf', 14)
+    flappyFont = love.graphics.newFont('flappy.ttf', 28)
+    hugeFont = love.graphics.newFont('flappy.ttf', 56)
     love.graphics.setFont(flappyFont)
 
     -- initialize our table of sounds
     sounds = {
-        ['jump'] = love.audio.newSource('sounds/jump.wav', 'static'),
-        ['explosion'] = love.audio.newSource('sounds/explosion.wav', 'static'),
-        ['hurt'] = love.audio.newSource('sounds/hurt.wav', 'static'),
-        ['score'] = love.audio.newSource('sounds/score.wav', 'static'),
-        ['switch'] = love.audio.newSource('sounds/switch.wav', 'static'),
+        ['jump'] = love.audio.newSource('jump.wav', 'static'),
+        ['explosion'] = love.audio.newSource('explosion.wav', 'static'),
+        ['hurt'] = love.audio.newSource('hurt.wav', 'static'),
+        ['score'] = love.audio.newSource('score.wav', 'static'),
+        ['switch'] = love.audio.newSource('switch.wav', 'static'),
 
         -- https://freesound.org/people/xsgianni/sounds/388079/
-        ['music'] = love.audio.newSource('sounds/marios_way.mp3', 'static')
+        ['music'] = love.audio.newSource('marios_way.mp3', 'static')
     }
 
     -- kick off music
