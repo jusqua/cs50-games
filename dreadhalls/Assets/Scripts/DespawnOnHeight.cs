@@ -14,6 +14,7 @@ public class DespawnOnHeight : MonoBehaviour
 
     void Update() {
         if (characterController.transform.position.y < height) {
+            RenderMazeInfo.mazeNum = 0;
             Destroy(DontDestroy.instance.gameObject);
             SceneManager.LoadScene("Game Over");
         }
