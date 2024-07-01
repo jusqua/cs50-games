@@ -32,7 +32,7 @@ match/src/Util.lua linguist-vendored
 
 # Super Mario Bros.
 mario/main.lua linguist-vendored
-mario/lib/**/* linguist-vendored
+mario/lib/**/*.lua linguist-vendored
 mario/src/states/BaseState.lua linguist-vendored
 mario/src/states/entity/*.lua linguist-vendored
 mario/src/Animation.lua linguist-vendored
@@ -48,7 +48,7 @@ mario/src/Util.lua linguist-vendored
 
 # Legend of Zelda
 zelda/main.lua linguist-vendored
-zelda/lib/**/* linguist-vendored
+zelda/lib/**/*.lua linguist-vendored
 zelda/src/states/entity/EntityIdleState.lua linguist-vendored
 zelda/src/states/entity/EntityWalkState.lua linguist-vendored
 zelda/src/states/game/GameOverState.lua linguist-vendored
@@ -112,36 +112,32 @@ helicopter/Assets/Resources/Scripts/CoinText.cs linguist-vendored
 helicopter/Assets/Resources/Scripts/GameOverText.cs linguist-vendored
 helicopter/Assets/Resources/Scripts/ScrollingBrackground.cs linguist-vendored
 helicopter/Assets/Resources/Scripts/Skyscraper.cs linguist-vendored
-helicopter/Assets/ProtoPack/**/* linguist-vendored
+helicopter/Assets/ProtoPack/**/*.cs linguist-vendored
 helicopter/Assets/**/*.meta linguist-vendored
-helicopter/Logs/**/* linguist-vendored
-helicopter/Packages/**/* linguist-vendored
-helicopter/ProjectSettings/**/* linguist-vendored
+helicopter/Logs/**/*.cs linguist-vendored
+helicopter/Packages/**/*.cs linguist-vendored
+helicopter/ProjectSettings/**/*.cs linguist-vendored
 
 # Dreadhalls
 dreadhalls/Assets/Scripts/DontDestroy.cs linguist-vendored
 dreadhalls/Assets/Scripts/GrabPickups.cs linguist-vendored
 dreadhalls/Assets/Scripts/Pickup.cs linguist-vendored
-dreadhalls/Assets/DungeonModules/**/* linguist-vendored
-dreadhalls/Assets/Fonts/**/* linguist-vendored
-dreadhalls/Assets/Prefabs/**/* linguist-vendored
-dreadhalls/Assets/Resources/**/* linguist-vendored
-dreadhalls/Assets/Sounds/**/* linguist-vendored
-"dreadhalls/Assets/Standard Assets/**/*" linguist-vendored
+dreadhalls/Assets/DungeonModules/**/*.cs linguist-vendored
+"dreadhalls/Assets/Standard Assets/**/*.cs" linguist-vendored
 dreadhalls/Assets/**/*.meta linguist-vendored
-dreadhalls/Logs/**/* linguist-vendored
-dreadhalls/Packages/**/* linguist-vendored
-dreadhalls/ProjectSettings/**/* linguist-vendored
+dreadhalls/Logs/**/*.cs linguist-vendored
+dreadhalls/Packages/**/*.cs linguist-vendored
+dreadhalls/ProjectSettings/**/*.cs linguist-vendored
 
 # Portal
-portal/Assets/FireFireWeapon/**/* linguist-vendored
-portal/Assets/ProCore/**/* linguist-vendored
-portal/Assets/Shaders/**/* linguist-vendored
-"portal/Assets/Standard Assets/**/*" linguist-vendored
+portal/Assets/FireFireWeapon/**/*.cs linguist-vendored
+portal/Assets/ProCore/**/*.cs linguist-vendored
+portal/Assets/Shaders/**/*.shader linguist-vendored
+"portal/Assets/Standard Assets/**/*.cs" linguist-vendored
 portal/Assets/Scripts/DebugRay.cs linguist-vendored
 portal/Assets/Scripts/Portal.cs linguist-vendored
 portal/Assets/Scripts/PortalGun.cs linguist-vendored
 portal/Assets/**/*.meta linguist-vendored
-portal/Logs/**/* linguist-vendored
-portal/Packages/**/* linguist-vendored
-portal/ProjectSettings/**/* linguist-vendored
+portal/Logs/**/*.cs linguist-vendored
+portal/Packages/**/*.cs linguist-vendored
+portal/ProjectSettings/**/*.cs linguist-vendored
