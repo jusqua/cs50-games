@@ -1,0 +1,9 @@
+lib/**/*.lua linguist-vendored
+src/states/*.lua linguist-vendored
+src/Background.lua linguist-vendored
+src/constants.lua linguist-vendored
+src/Dependencies.lua linguist-vendored
+src/Obstacle.lua linguist-vendored
+src/StateMachine.lua linguist-vendored
+src/Util.lua linguist-vendored
+main.lua linguist-vendored
