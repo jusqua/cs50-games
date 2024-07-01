@@ -1,143 +1,84 @@
+* linguist-generated
+
 # Pong
-pong/classes/*.lua linguist-vendored
-pong/external/*.lua linguist-vendored
+pong/main.lua linguist-generated=false
 
 # Flappy Bird
-flappy/states/BaseState.lua linguist-vendored
-flappy/states/CountdownState.lua linguist-vendored
-flappy/states/TitleScreenState.lua linguist-vendored
-flappy/Bird.lua linguist-vendored
-flappy/class.lua linguist-vendored
-flappy/Pipe.lua linguist-vendored
-flappy/PipePair.lua linguist-vendored
-flappy/StateMachine.lua linguist-vendored
-flappy/push.lua linguist-vendored
+flappy/states/PauseState.lua linguist-generated=false
+flappy/states/PlayState.lua linguist-generated=false
+flappy/states/ScoreState.lua linguist-generated=false
+flappy/main.lua linguist-generated=false
 
 # Breakout
-breakout/lib/**/*.lua linguist-vendored
-breakout/src/states/BaseState.lua linguist-vendored
-breakout/src/states/EnterHighScoreState.lua linguist-vendored
-breakout/src/states/GameOverState.lua linguist-vendored
-breakout/src/states/HighScoreState.lua linguist-vendored
-breakout/src/states/StartState.lua linguist-vendored
-breakout/src/Ball.lua linguist-vendored
-breakout/src/StateMachine.lua linguist-vendored
-breakout/src/constants.lua linguist-vendored
+breakout/src/states/PaddleSelectState.lua linguist-generated=false
+breakout/src/states/PlayState.lua linguist-generated=false
+breakout/src/states/ServeState.lua linguist-generated=false
+breakout/src/states/VictoryState.lua linguist-generated=false
+breakout/src/Brick.lua linguist-generated=false
+breakout/src/Dependencies.lua linguist-generated=false
+breakout/src/LevelMaker.lua linguist-generated=false
+breakout/src/Paddle.lua linguist-generated=false
+breakout/src/Powerup.lua linguist-generated=false
+breakout/src/Util.lua linguist-generated=false
+breakout/main.lua linguist-generated=false
 
 # Match 3
-match/lib/**/*.lua linguist-vendored
-match/src/states/BaseState.lua linguist-vendored
-match/src/StateMachine.lua linguist-vendored
-match/src/Util.lua linguist-vendored
+match/src/states/BeginGameState.lua linguist-generated=false
+match/src/states/GameOverState.lua linguist-generated=false
+match/src/states/PlayState.lua linguist-generated=false
+match/src/states/StartState.lua linguist-generated=false
+match/src/Board.lua linguist-generated=false
+match/src/Dependencies.lua linguist-generated=false
+match/src/Tile.lua linguist-generated=false
+match/main.lua linguist-generated=false
 
 # Super Mario Bros.
-mario/main.lua linguist-vendored
-mario/lib/**/*.lua linguist-vendored
-mario/src/states/BaseState.lua linguist-vendored
-mario/src/states/entity/*.lua linguist-vendored
-mario/src/Animation.lua linguist-vendored
-mario/src/Entity.lua linguist-vendored
-mario/src/GameLevel.lua linguist-vendored
-mario/src/GameObject.lua linguist-vendored
-mario/src/Player.lua linguist-vendored
-mario/src/Snail.lua linguist-vendored
-mario/src/StateMachine.lua linguist-vendored
-mario/src/Tile.lua linguist-vendored
-mario/src/TileMap.lua linguist-vendored
-mario/src/Util.lua linguist-vendored
+mario/src/states/game/*.lua linguist-generated=false
+mario/src/Dependencies.lua linguist-generated=false
+mario/src/LevelMaker.lua linguist-generated=false
+mario/src/constants.lua linguist-generated=false
 
 # Legend of Zelda
-zelda/main.lua linguist-vendored
-zelda/lib/**/*.lua linguist-vendored
-zelda/src/states/entity/EntityIdleState.lua linguist-vendored
-zelda/src/states/entity/EntityWalkState.lua linguist-vendored
-zelda/src/states/game/GameOverState.lua linguist-vendored
-zelda/src/states/game/StartState.lua linguist-vendored
-zelda/src/states/BaseState.lua linguist-vendored
-zelda/src/world/Doorway.lua linguist-vendored
-zelda/src/world/Dungeon.lua linguist-vendored
-zelda/src/Animation.lua linguist-vendored
-zelda/src/Hitbox.lua linguist-vendored
-zelda/src/StateMachine.lua linguist-vendored
-zelda/src/Util.lua linguist-vendored
-zelda/src/constants.lua linguist-vendored
+zelda/src/states/entity/player/PlayerGrabState.lua linguist-generated=false
+zelda/src/states/entity/player/PlayerIdleState.lua linguist-generated=false
+zelda/src/states/entity/player/PlayerLiftState.lua linguist-generated=false
+zelda/src/states/entity/player/PlayerThrowState.lua linguist-generated=false
+zelda/src/states/entity/player/PlayerWalkState.lua linguist-generated=false
+zelda/src/states/game/PlayState.lua linguist-generated=false
+zelda/src/world/Room.lua linguist-generated=false
+zelda/src/Dependencies.lua linguist-generated=false
+zelda/src/Entity.lua linguist-generated=false
+zelda/src/GameObject.lua linguist-generated=false
+zelda/src/Player.lua linguist-generated=false
+zelda/src/entity_defs.lua linguist-generated=false
+zelda/src/game_objects.lua linguist-generated=false
 
 # Angry Birds
-angry/lib/**/*.lua linguist-vendored
-angry/src/states/*.lua linguist-vendored
-angry/src/Background.lua linguist-vendored
-angry/src/constants.lua linguist-vendored
-angry/src/Dependencies.lua linguist-vendored
-angry/src/Obstacle.lua linguist-vendored
-angry/src/StateMachine.lua linguist-vendored
-angry/src/Util.lua linguist-vendored
-angry/main.lua linguist-vendored
+angry/src/Alien.lua linguist-generated=false
+angry/src/AlienLaunchMaker.lua linguist-generated=false
+angry/src/Level.lua linguist-generated=false
 
 # Pokémon
-pokemon/lib/**/*.lua linguist-vendored
-pokemon/src/battle/*.lua linguist-vendored
-pokemon/src/entity/*.lua linguist-vendored
-pokemon/src/world/*.lua linguist-vendored
-pokemon/src/gui/Panel.lua linguist-vendored
-pokemon/src/gui/ProgressBar.lua linguist-vendored
-pokemon/src/gui/Textbox.lua linguist-vendored
-pokemon/src/states/entity/*.lua linguist-vendored
-pokemon/src/states/game/BattleMenuState.lua linguist-vendored
-pokemon/src/states/game/BattleMessageState.lua linguist-vendored
-pokemon/src/states/game/BattleState.lua linguist-vendored
-pokemon/src/states/game/DialogueState.lua linguist-vendored
-pokemon/src/states/game/FadeInState.lua linguist-vendored
-pokemon/src/states/game/FadeOutState.lua linguist-vendored
-pokemon/src/states/game/FieldMenuState.lua linguist-vendored
-pokemon/src/states/game/MenuState.lua linguist-vendored
-pokemon/src/states/game/PlayState.lua linguist-vendored
-pokemon/src/states/game/StartState.lua linguist-vendored
-pokemon/src/states/BaseState.lua linguist-vendored
-pokemon/src/states/StateStack.lua linguist-vendored
-pokemon/src/Animation.lua linguist-vendored
-pokemon/src/Party.lua linguist-vendored
-pokemon/src/StateMachine.lua linguist-vendored
-pokemon/src/Util.lua linguist-vendored
-pokemon/src/constants.lua linguist-vendored
-pokemon/src/pokemon_defs.lua linguist-vendored
-pokemon/main.lua linguist-vendored
+pokemon/src/gui/Menu.lua linguist-generated=false
+pokemon/src/gui/Selection.lua linguist-generated=false
+pokemon/src/states/LevelUpMenuState.lua linguist-generated=false
+pokemon/src/states/TakeTurnState.lua linguist-generated=false
+pokemon/src/Dependencies.lua linguist-generated=false
+pokemon/src/Dependencies.lua linguist-generated=false
+pokemon/src/Pokemon.lua linguist-generated=false
 
 # Helicopter 3D Game
-helicopter/Assets/Resources/Scripts/Airplane.cs linguist-vendored
-helicopter/Assets/Resources/Scripts/AirplaneSpawner.cs linguist-vendored
-helicopter/Assets/Resources/Scripts/Bounds.cs linguist-vendored
-helicopter/Assets/Resources/Scripts/Coin.cs linguist-vendored
-helicopter/Assets/Resources/Scripts/CoinSpawner.cs linguist-vendored
-helicopter/Assets/Resources/Scripts/CoinText.cs linguist-vendored
-helicopter/Assets/Resources/Scripts/GameOverText.cs linguist-vendored
-helicopter/Assets/Resources/Scripts/ScrollingBrackground.cs linguist-vendored
-helicopter/Assets/Resources/Scripts/Skyscraper.cs linguist-vendored
-helicopter/Assets/ProtoPack/**/*.cs linguist-vendored
-helicopter/Assets/**/*.meta linguist-vendored
-helicopter/Logs/**/*.cs linguist-vendored
-helicopter/Packages/**/*.cs linguist-vendored
-helicopter/ProjectSettings/**/*.cs linguist-vendored
+helicopter/Assets/Resources/Scripts/Gem.cs linguist-generated=false
+helicopter/Assets/Resources/Scripts/GemSpawner.cs linguist-generated=false
+helicopter/Assets/Resources/Scripts/HeliController.cs linguist-generated=false
+helicopter/Assets/Resources/Scripts/SkyscraperSpawner.cs linguist-generated=false
 
 # Dreadhalls
-dreadhalls/Assets/Scripts/DontDestroy.cs linguist-vendored
-dreadhalls/Assets/Scripts/GrabPickups.cs linguist-vendored
-dreadhalls/Assets/Scripts/Pickup.cs linguist-vendored
-dreadhalls/Assets/DungeonModules/**/*.cs linguist-vendored
-"dreadhalls/Assets/Standard Assets/**/*.cs" linguist-vendored
-dreadhalls/Assets/**/*.meta linguist-vendored
-dreadhalls/Logs/**/*.cs linguist-vendored
-dreadhalls/Packages/**/*.cs linguist-vendored
-dreadhalls/ProjectSettings/**/*.cs linguist-vendored
+dreadhalls/Assets/Scripts/DespawnOnHeight.cs linguist-generated=false
+dreadhalls/Assets/Scripts/LevelGenerator.cs linguist-generated=false
+dreadhalls/Assets/Scripts/LoadSceneOnInput.cs linguist-generated=false
+dreadhalls/Assets/Scripts/RenderMazeInfo.cs linguist-generated=false
 
 # Portal
-portal/Assets/FireFireWeapon/**/*.cs linguist-vendored
-portal/Assets/ProCore/**/*.cs linguist-vendored
-portal/Assets/Shaders/**/*.shader linguist-vendored
-"portal/Assets/Standard Assets/**/*.cs" linguist-vendored
-portal/Assets/Scripts/DebugRay.cs linguist-vendored
-portal/Assets/Scripts/Portal.cs linguist-vendored
-portal/Assets/Scripts/PortalGun.cs linguist-vendored
-portal/Assets/**/*.meta linguist-vendored
-portal/Logs/**/*.cs linguist-vendored
-portal/Packages/**/*.cs linguist-vendored
-portal/ProjectSettings/**/*.cs linguist-vendored
+portal/Assets/Scripts/GoalCollision.cs linguist-generated=false
+
