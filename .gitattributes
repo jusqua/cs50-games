@@ -1,13 +1,13 @@
 # Flappy Bird
-breakout/states/BaseState.lua linguist-vendored
-breakout/states/CountdownState.lua linguist-vendored
-breakout/states/TitleScreenState.lua linguist-vendored
-breakout/Bird.lua linguist-vendored
-breakout/class.lua linguist-vendored
-breakout/Pipe.lua linguist-vendored
-breakout/PipePair.lua linguist-vendored
-breakout/StateMachine.lua linguist-vendored
-breakout/push.lua linguist-vendored
+flappy/states/BaseState.lua linguist-vendored
+flappy/states/CountdownState.lua linguist-vendored
+flappy/states/TitleScreenState.lua linguist-vendored
+flappy/Bird.lua linguist-vendored
+flappy/class.lua linguist-vendored
+flappy/Pipe.lua linguist-vendored
+flappy/PipePair.lua linguist-vendored
+flappy/StateMachine.lua linguist-vendored
+flappy/push.lua linguist-vendored
 
 # Breakout
 breakout/lib/**/*.lua linguist-vendored
