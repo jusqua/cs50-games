@@ -31,6 +31,22 @@ angry/src/StateMachine.lua linguist-vendored
 angry/src/Util.lua linguist-vendored
 angry/main.lua linguist-vendored
 
+# Helicopter 3D Game
+helicopter/Assets/Resources/Scripts/Airplane.cs linguist-generated
+helicopter/Assets/Resources/Scripts/AirplaneSpawner.cs linguist-generated
+helicopter/Assets/Resources/Scripts/Bounds.cs linguist-generated
+helicopter/Assets/Resources/Scripts/Coin.cs linguist-generated
+helicopter/Assets/Resources/Scripts/CoinSpawner.cs linguist-generated
+helicopter/Assets/Resources/Scripts/CoinText.cs linguist-generated
+helicopter/Assets/Resources/Scripts/GameOverText.cs linguist-generated
+helicopter/Assets/Resources/Scripts/ScrollingBrackground.cs linguist-generated
+helicopter/Assets/Resources/Scripts/Skyscraper.cs linguist-generated
+helicopter/Assets/ProtoPack/**/* linguist-generated
+helicopter/Assets/**/*.meta linguist-generated
+helicopter/Logs/**/* linguist-vendored
+helicopter/Packages/**/* linguist-vendored
+helicopter/ProjectSettings/**/* linguist-vendored
+
 # Dreadhalls
 dreadhalls/Assets/Scripts/DontDestroy.cs linguist-generated
 dreadhalls/Assets/Scripts/GrabPickups.cs linguist-generated
