@@ -1,3 +1,18 @@
+# Breakout
+breakout/**/*.lua linguist-vendored
+breakout/main.lua linguist-vendored=false
+breakout/src/states/PaddleSelectState.lua linguist-vendored=false
+breakout/src/states/PlayState.lua linguist-vendored=false
+breakout/src/states/ServeState.lua linguist-vendored=false
+breakout/src/states/VictoryState.lua linguist-vendored=false
+breakout/src/Brick.lua linguist-vendored=false
+breakout/src/Dependencies.lua linguist-vendored=false
+breakout/src/LevelMaker.lua linguist-vendored=false
+breakout/src/Paddle.lua linguist-vendored=false
+breakout/src/Powerup.lua linguist-vendored=false
+breakout/src/Util.lua linguist-vendored=false
+
+# Angry Birds
 angry/lib/**/*.lua linguist-vendored
 angry/src/states/*.lua linguist-vendored
 angry/src/Background.lua linguist-vendored
