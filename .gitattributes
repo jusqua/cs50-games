@@ -53,6 +53,35 @@ angry/src/StateMachine.lua linguist-vendored
 angry/src/Util.lua linguist-vendored
 angry/main.lua linguist-vendored
 
+# Pokémon
+pokemon/lib/**/*.lua linguist-vendored
+pokemon/src/battle/*.lua linguist-vendored
+pokemon/src/entity/*.lua linguist-vendored
+pokemon/src/world/*.lua linguist-vendored
+pokemon/src/gui/Panel.lua linguist-vendored
+pokemon/src/gui/ProgressBar.lua linguist-vendored
+pokemon/src/gui/Textbox.lua linguist-vendored
+pokemon/src/states/entity/*.lua linguist-vendored
+pokemon/src/states/game/BattleMenuState.lua linguist-vendored
+pokemon/src/states/game/BattleMessageState.lua linguist-vendored
+pokemon/src/states/game/BattleState.lua linguist-vendored
+pokemon/src/states/game/DialogueState.lua linguist-vendored
+pokemon/src/states/game/FadeInState.lua linguist-vendored
+pokemon/src/states/game/FadeOutState.lua linguist-vendored
+pokemon/src/states/game/FieldMenuState.lua linguist-vendored
+pokemon/src/states/game/MenuState.lua linguist-vendored
+pokemon/src/states/game/PlayState.lua linguist-vendored
+pokemon/src/states/game/StartState.lua linguist-vendored
+pokemon/src/states/BaseState.lua linguist-vendored
+pokemon/src/states/StateStack.lua linguist-vendored
+pokemon/src/Animation.lua linguist-vendored
+pokemon/src/Party.lua linguist-vendored
+pokemon/src/StateMachine.lua linguist-vendored
+pokemon/src/Util.lua linguist-vendored
+pokemon/src/constants.lua linguist-vendored
+pokemon/src/pokemon_defs.lua linguist-vendored
+pokemon/main.lua linguist-vendored
+
 # Helicopter 3D Game
 helicopter/Assets/Resources/Scripts/Airplane.cs linguist-generated
 helicopter/Assets/Resources/Scripts/AirplaneSpawner.cs linguist-generated
