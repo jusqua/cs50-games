@@ -17,7 +17,7 @@ Don't copy and paste any of these files, try to solve any problems by yourself.
 * Helicopter Game 3D → [Submission](helicopter) and [Screencast](https://youtu.be/S29ZDYpxwDg)
 * Dreadhalls → [Submission](dreadhalls) and [Screencast](https://youtu.be/xidasbXpMnM)
 * Portal → [Submission](portal) and [Screencast](https://youtu.be/3qnUjWxPenY)
-* Final Project [Submission](https://github.com/jusqua/bytepath/tree/cs50-games) and [Screencast](https://youtu.be/lWH70MFXmsE)
+* Final Project → [Submission](https://github.com/jusqua/bytepath/tree/cs50-games) and [Screencast](https://youtu.be/lWH70MFXmsE)
 
 ## Certificate
 
