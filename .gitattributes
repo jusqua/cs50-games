@@ -20,6 +20,12 @@ breakout/src/Ball.lua linguist-vendored
 breakout/src/StateMachine.lua linguist-vendored
 breakout/src/constants.lua linguist-vendored
 
+# Match 3
+match/lib/**/*.lua linguist-vendored
+match/src/states/BaseState.lua linguist-vendored
+match/src/StateMachine.lua linguist-vendored
+match/src/Util.lua linguist-vendored
+
 # Super Mario Bros.
 mario/main.lua linguist-vendored
 mario/lib/**/* linguist-vendored
