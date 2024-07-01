@@ -116,3 +116,16 @@ dreadhalls/Assets/**/*.meta linguist-generated
 dreadhalls/Logs/**/* linguist-vendored
 dreadhalls/Packages/**/* linguist-vendored
 dreadhalls/ProjectSettings/**/* linguist-vendored
+
+# Portal
+portal/Assets/FireFireWeapon/**/* linguist-generated
+portal/Assets/ProCore/**/* linguist-generated
+portal/Assets/Shaders/**/* linguist-generated
+"portal/Assets/Standard Assets/**/*" linguist-generated
+portal/Assets/Scripts/DebugRay.cs linguist-generated
+portal/Assets/Scripts/Portal.cs linguist-generated
+portal/Assets/Scripts/PortalGun.cs linguist-generated
+portal/Assets/**/*.meta linguist-generated
+portal/Logs/**/* linguist-vendored
+portal/Packages/**/* linguist-vendored
+portal/ProjectSettings/**/* linguist-vendored
