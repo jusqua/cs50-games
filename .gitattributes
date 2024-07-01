@@ -1,3 +1,7 @@
+# Pong
+pong/classes/*.lua linguist-vendored
+pong/external/*.lua linguist-vendored
+
 # Flappy Bird
 flappy/states/BaseState.lua linguist-vendored
 flappy/states/CountdownState.lua linguist-vendored
