@@ -1,0 +1,9 @@
+angry/lib/**/*.lua linguist-vendored
+angry/src/states/*.lua linguist-vendored
+angry/src/Background.lua linguist-vendored
+angry/src/constants.lua linguist-vendored
+angry/src/Dependencies.lua linguist-vendored
+angry/src/Obstacle.lua linguist-vendored
+angry/src/StateMachine.lua linguist-vendored
+angry/src/Util.lua linguist-vendored
+angry/main.lua linguist-vendored
