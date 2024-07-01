@@ -46,6 +46,22 @@ mario/src/Tile.lua linguist-vendored
 mario/src/TileMap.lua linguist-vendored
 mario/src/Util.lua linguist-vendored
 
+# Legend of Zelda
+zelda/main.lua linguist-vendored
+zelda/lib/**/* linguist-vendored
+zelda/src/states/entity/EntityIdleState.lua linguist-vendored
+zelda/src/states/entity/EntityWalkState.lua linguist-vendored
+zelda/src/states/game/GameOverState.lua linguist-vendored
+zelda/src/states/game/StartState.lua linguist-vendored
+zelda/src/states/BaseState.lua linguist-vendored
+zelda/src/world/Doorway.lua linguist-vendored
+zelda/src/world/Dungeon.lua linguist-vendored
+zelda/src/Animation.lua linguist-vendored
+zelda/src/Hitbox.lua linguist-vendored
+zelda/src/StateMachine.lua linguist-vendored
+zelda/src/Util.lua linguist-vendored
+zelda/src/constants.lua linguist-vendored
+
 # Angry Birds
 angry/lib/**/*.lua linguist-vendored
 angry/src/states/*.lua linguist-vendored
