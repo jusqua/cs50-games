@@ -19,3 +19,18 @@ angry/src/Obstacle.lua linguist-vendored
 angry/src/StateMachine.lua linguist-vendored
 angry/src/Util.lua linguist-vendored
 angry/main.lua linguist-vendored
+
+# Dreadhalls
+dreadhalls/Assets/Scripts/DontDestroy.cs linguist-generated
+dreadhalls/Assets/Scripts/GrabPickups.cs linguist-generated
+dreadhalls/Assets/Scripts/Pickup.cs linguist-generated
+dreadhalls/Assets/DungeonModules/**/* linguist-generated
+dreadhalls/Assets/Fonts/**/* linguist-generated
+dreadhalls/Assets/Prefabs/**/* linguist-generated
+dreadhalls/Assets/Resources/**/* linguist-generated
+dreadhalls/Assets/Sounds/**/* linguist-generated
+"dreadhalls/Assets/Standard Assets/**/*" linguist-generated
+dreadhalls/Assets/**/*.meta linguist-generated
+dreadhalls/Logs/**/* linguist-vendored
+dreadhalls/Packages/**/* linguist-vendored
+dreadhalls/ProjectSettings/**/* linguist-vendored
