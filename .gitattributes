@@ -20,6 +20,22 @@ breakout/src/Ball.lua linguist-vendored
 breakout/src/StateMachine.lua linguist-vendored
 breakout/src/constants.lua linguist-vendored
 
+# Super Mario Bros.
+mario/main.lua linguist-vendored
+mario/lib/**/* linguist-vendored
+mario/src/states/BaseState.lua linguist-vendored
+mario/src/states/entity/*.lua linguist-vendored
+mario/src/Animation.lua linguist-vendored
+mario/src/Entity.lua linguist-vendored
+mario/src/GameLevel.lua linguist-vendored
+mario/src/GameObject.lua linguist-vendored
+mario/src/Player.lua linguist-vendored
+mario/src/Snail.lua linguist-vendored
+mario/src/StateMachine.lua linguist-vendored
+mario/src/Tile.lua linguist-vendored
+mario/src/TileMap.lua linguist-vendored
+mario/src/Util.lua linguist-vendored
+
 # Angry Birds
 angry/lib/**/*.lua linguist-vendored
 angry/src/states/*.lua linguist-vendored
