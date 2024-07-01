@@ -103,45 +103,45 @@ pokemon/src/pokemon_defs.lua linguist-vendored
 pokemon/main.lua linguist-vendored
 
 # Helicopter 3D Game
-helicopter/Assets/Resources/Scripts/Airplane.cs linguist-generated
-helicopter/Assets/Resources/Scripts/AirplaneSpawner.cs linguist-generated
-helicopter/Assets/Resources/Scripts/Bounds.cs linguist-generated
-helicopter/Assets/Resources/Scripts/Coin.cs linguist-generated
-helicopter/Assets/Resources/Scripts/CoinSpawner.cs linguist-generated
-helicopter/Assets/Resources/Scripts/CoinText.cs linguist-generated
-helicopter/Assets/Resources/Scripts/GameOverText.cs linguist-generated
-helicopter/Assets/Resources/Scripts/ScrollingBrackground.cs linguist-generated
-helicopter/Assets/Resources/Scripts/Skyscraper.cs linguist-generated
-helicopter/Assets/ProtoPack/**/* linguist-generated
-helicopter/Assets/**/*.meta linguist-generated
+helicopter/Assets/Resources/Scripts/Airplane.cs linguist-vendored
+helicopter/Assets/Resources/Scripts/AirplaneSpawner.cs linguist-vendored
+helicopter/Assets/Resources/Scripts/Bounds.cs linguist-vendored
+helicopter/Assets/Resources/Scripts/Coin.cs linguist-vendored
+helicopter/Assets/Resources/Scripts/CoinSpawner.cs linguist-vendored
+helicopter/Assets/Resources/Scripts/CoinText.cs linguist-vendored
+helicopter/Assets/Resources/Scripts/GameOverText.cs linguist-vendored
+helicopter/Assets/Resources/Scripts/ScrollingBrackground.cs linguist-vendored
+helicopter/Assets/Resources/Scripts/Skyscraper.cs linguist-vendored
+helicopter/Assets/ProtoPack/**/* linguist-vendored
+helicopter/Assets/**/*.meta linguist-vendored
 helicopter/Logs/**/* linguist-vendored
 helicopter/Packages/**/* linguist-vendored
 helicopter/ProjectSettings/**/* linguist-vendored
 
 # Dreadhalls
-dreadhalls/Assets/Scripts/DontDestroy.cs linguist-generated
-dreadhalls/Assets/Scripts/GrabPickups.cs linguist-generated
-dreadhalls/Assets/Scripts/Pickup.cs linguist-generated
-dreadhalls/Assets/DungeonModules/**/* linguist-generated
-dreadhalls/Assets/Fonts/**/* linguist-generated
-dreadhalls/Assets/Prefabs/**/* linguist-generated
-dreadhalls/Assets/Resources/**/* linguist-generated
-dreadhalls/Assets/Sounds/**/* linguist-generated
-"dreadhalls/Assets/Standard Assets/**/*" linguist-generated
-dreadhalls/Assets/**/*.meta linguist-generated
+dreadhalls/Assets/Scripts/DontDestroy.cs linguist-vendored
+dreadhalls/Assets/Scripts/GrabPickups.cs linguist-vendored
+dreadhalls/Assets/Scripts/Pickup.cs linguist-vendored
+dreadhalls/Assets/DungeonModules/**/* linguist-vendored
+dreadhalls/Assets/Fonts/**/* linguist-vendored
+dreadhalls/Assets/Prefabs/**/* linguist-vendored
+dreadhalls/Assets/Resources/**/* linguist-vendored
+dreadhalls/Assets/Sounds/**/* linguist-vendored
+"dreadhalls/Assets/Standard Assets/**/*" linguist-vendored
+dreadhalls/Assets/**/*.meta linguist-vendored
 dreadhalls/Logs/**/* linguist-vendored
 dreadhalls/Packages/**/* linguist-vendored
 dreadhalls/ProjectSettings/**/* linguist-vendored
 
 # Portal
-portal/Assets/FireFireWeapon/**/* linguist-generated
-portal/Assets/ProCore/**/* linguist-generated
-portal/Assets/Shaders/**/* linguist-generated
-"portal/Assets/Standard Assets/**/*" linguist-generated
-portal/Assets/Scripts/DebugRay.cs linguist-generated
-portal/Assets/Scripts/Portal.cs linguist-generated
-portal/Assets/Scripts/PortalGun.cs linguist-generated
-portal/Assets/**/*.meta linguist-generated
+portal/Assets/FireFireWeapon/**/* linguist-vendored
+portal/Assets/ProCore/**/* linguist-vendored
+portal/Assets/Shaders/**/* linguist-vendored
+"portal/Assets/Standard Assets/**/*" linguist-vendored
+portal/Assets/Scripts/DebugRay.cs linguist-vendored
+portal/Assets/Scripts/Portal.cs linguist-vendored
+portal/Assets/Scripts/PortalGun.cs linguist-vendored
+portal/Assets/**/*.meta linguist-vendored
 portal/Logs/**/* linguist-vendored
 portal/Packages/**/* linguist-vendored
 portal/ProjectSettings/**/* linguist-vendored
